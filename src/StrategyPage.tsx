@@ -6,13 +6,12 @@ import {
   Cpu, 
   CheckCircle,
   Mail,
-  Linkedin,
   Instagram
 } from "lucide-react";
 import { useEffect } from "react";
 
 interface StrategyPageProps {
-  onNavigate: (page: 'home' | 'case-study' | 'strategy') => void;
+  onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms') => void;
 }
 
 const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
@@ -34,13 +33,12 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
             <span className="text-xl font-bold tracking-tighter text-primary">Relativ Connect</span>
           </div>
           <div className="hidden md:flex items-center gap-8 font-medium tracking-tight">
+            <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Capabilities</button>
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
-            <button onClick={() => onNavigate('home')} className="text-primary border-b-2 border-primary pb-1">Services</button>
-            <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Insights</button>
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
           </div>
           <button onClick={() => onNavigate('home')} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
-            Get Started
+            Start a Project
           </button>
         </div>
       </nav>

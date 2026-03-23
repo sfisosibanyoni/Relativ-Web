@@ -8,12 +8,11 @@ import {
   Radio, 
   BookOpen, 
   Layout,
-  Linkedin,
   Instagram
 } from "lucide-react";
 
 interface CaseStudyPageProps {
-  onNavigate: (page: 'home' | 'case-study') => void;
+  onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms') => void;
 }
 
 const Counter = ({ value, duration = 2, prefix = "", suffix = "" }: { value: number, duration?: number, prefix?: string, suffix?: string }) => {
@@ -56,13 +55,13 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
             <span className="text-xl font-bold tracking-tighter text-primary">Relativ Connect</span>
           </div>
           <div className="hidden md:flex items-center gap-8 font-medium tracking-tight">
-            <a className="text-slate-400 hover:text-slate-100 transition-colors" href="#capabilities" onClick={() => onNavigate('home')}>Capabilities</a>
-            <a className="text-slate-400 hover:text-slate-100 transition-colors" href="#work" onClick={() => onNavigate('home')}>Work</a>
-            <a className="text-slate-400 hover:text-slate-100 transition-colors" href="#contact" onClick={() => onNavigate('home')}>Contact</a>
+            <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Capabilities</button>
+            <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
+            <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
           </div>
-          <a href="#contact" onClick={() => onNavigate('home')} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
+          <button onClick={() => onNavigate('home')} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
             Start a Project
-          </a>
+          </button>
         </div>
       </nav>
 
@@ -263,7 +262,6 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
             {['Privacy Policy', 'Terms of Service', 'Cookie Settings'].map((link) => (
               <a key={link} className="text-[10px] uppercase tracking-widest font-bold text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">{link}</a>
             ))}
-            <a className="text-slate-500 hover:text-primary transition-colors" href="#"><Linkedin className="w-4 h-4" /></a>
             <a className="text-slate-500 hover:text-primary transition-colors" href="#"><Instagram className="w-4 h-4" /></a>
           </div>
         </div>

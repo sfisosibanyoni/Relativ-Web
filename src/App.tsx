@@ -6,8 +6,6 @@ import {
   Layout, 
   Share2, 
   Mail, 
-  Linkedin, 
-  Github, 
   Twitter 
 } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
@@ -22,20 +20,23 @@ const Navbar = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'st
   <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
     <div className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
       <div className="flex items-center gap-4 cursor-pointer group" onClick={() => onNavigate('home')}>
-        <img 
-          alt="Relativ Connect logo" 
-          className="h-8 w-auto transition-transform group-hover:scale-110" 
-          src="/api/attachments/1742638035189"
-        />
         <span className="text-xl font-bold tracking-tighter text-primary">Relativ Connect</span>
       </div>
       <div className="hidden md:flex items-center gap-8 font-medium tracking-tight">
-        <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Capabilities</button>
-        <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
-        <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
+        <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('capabilities')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-slate-100 transition-colors">Capabilities</button>
+        <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
+        <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
       </div>
-      <button onClick={() => onNavigate('home')} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
-        Start a Project
+      <button 
+        onClick={() => {
+          onNavigate('home');
+          setTimeout(() => {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }} 
+        className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block"
+      >
+        Get in Touch
       </button>
     </div>
   </nav>
@@ -129,11 +130,8 @@ const Capabilities = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study'
       <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
         <div>
           <h2 className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant mb-2">Our Capabilities</h2>
-          <h3 className="text-4xl font-black tracking-tighter uppercase">Engineering Solutions</h3>
+          <h3 className="text-4xl font-black tracking-tighter uppercase">What We Do</h3>
         </div>
-        <button onClick={() => onNavigate('home')} className="group inline-flex items-center gap-2 text-primary font-bold uppercase text-xs tracking-widest hover:gap-4 transition-all">
-          Explore All Services <ArrowRight className="w-4 h-4" />
-        </button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
         <CapabilityCard 
@@ -223,7 +221,7 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
             <img 
               src="https://picsum.photos/seed/trade/800/600" 
               alt="IATF 2025 Case Study" 
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
+              className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100"
               referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-700"></div>
@@ -324,15 +322,6 @@ const Contact = () => (
                 <div className="font-medium">hello@relativconnect.com</div>
               </div>
             </div>
-            <div className="flex items-center gap-4 group cursor-pointer">
-              <div className="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
-                <Linkedin className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Connect</div>
-                <div className="font-medium">Relativ Connect</div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -407,11 +396,6 @@ const Footer = () => (
   <footer className="bg-slate-950 border-t border-slate-800/30">
     <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
       <div className="mb-8 md:mb-0">
-        <img 
-          alt="Relativ Connect logo" 
-          className="h-8 w-auto mb-4 brightness-0 invert opacity-80" 
-          src="/api/attachments/1742638035189"
-        />
         <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect. Architectural Precision in Data.</p>
       </div>
       <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
