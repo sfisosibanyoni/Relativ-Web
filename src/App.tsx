@@ -142,26 +142,26 @@ const Capabilities = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study'
           colorClass="primary"
           onClick={() => onNavigate('strategy')}
         />
-        <CapabilityCard 
-          icon={Brain} 
-          title="AI Solutions" 
-          description="Smart automation and custom AI models designed to turn your data into useful business tools."
-          colorClass="secondary"
-          onClick={() => onNavigate('ai-solutions')}
-        />
-        <CapabilityCard 
-          icon={Layout} 
-          title="Design & Creative" 
-          description="Beautiful, clear visuals and high-fidelity motion design that make a lasting impression."
-          colorClass="tertiary"
-          onClick={() => onNavigate('design-creative')}
-        />
-        <CapabilityCard 
-          icon={Share2} 
-          title="Marketing & Comms" 
+        <CapabilityCard
+          icon={Share2}
+          title="Marketing & Comms"
           description="Full-scale campaigns and event production to help your brand connect with the right audience."
           colorClass="primary"
           onClick={() => onNavigate('marketing-comms')}
+        />
+        <CapabilityCard
+          icon={Layout}
+          title="Media Placement"
+          description="Precision media architecture across OOH, TV, radio, digital, and programmatic — unified with Relativ Media's 900+ physical assets."
+          colorClass="tertiary"
+          onClick={() => onNavigate('design-creative')}
+        />
+        <CapabilityCard
+          icon={Brain}
+          title="Generative AI"
+          description="Culturally accurate, on-brand AI creative at scale — bespoke image libraries, on-brand systems, and AI strategy consulting for brands and agencies."
+          colorClass="secondary"
+          onClick={() => onNavigate('ai-solutions')}
         />
       </div>
     </div>

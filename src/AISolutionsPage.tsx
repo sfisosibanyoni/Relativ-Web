@@ -1,12 +1,12 @@
 import { motion } from "motion/react";
-import { 
-  ArrowRight, 
-  Brain, 
-  Sparkles, 
-  Zap,
-  CheckCircle,
-  Mail,
-  Instagram
+import {
+  ArrowRight,
+  Sparkles,
+  ImageIcon,
+  SlidersHorizontal,
+  Globe,
+  Users,
+  LineChart,
 } from "lucide-react";
 import { useEffect } from "react";
 
@@ -14,14 +14,47 @@ interface AISolutionsPageProps {
   onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void;
 }
 
+const pillars = [
+  {
+    icon: Sparkles,
+    title: "AI-Powered Visual Content",
+    body: "Premium visuals for marketing, campaign imagery, and high-performance social content designed to convert.",
+  },
+  {
+    icon: ImageIcon,
+    title: "Bespoke Image Libraries",
+    body: "Custom visual banks tailored specifically to your unique brand identity, target market, and audience segments.",
+  },
+  {
+    icon: SlidersHorizontal,
+    title: "On-Brand Systems",
+    body: "Proprietary workflows and technical prompt systems fine-tuned to maintain absolute brand consistency.",
+  },
+  {
+    icon: Globe,
+    title: "Cultural Accuracy",
+    body: "Authentic, regionally aware imagery that respects nuance — especially tailored for diverse African markets.",
+  },
+  {
+    icon: Users,
+    title: "Full-Service Support",
+    body: "The best of both worlds: combining human creative direction and expert curation with rapid AI generation.",
+  },
+  {
+    icon: LineChart,
+    title: "AI Strategy Consulting",
+    body: "Advisory services focused on seamlessly integrating AI tools into your existing production and creative workflows.",
+  },
+];
+
+
 const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <div className="bg-surface text-on-surface font-sans selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
-      {/* TopNavBar */}
+
+      {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
         <div className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
           <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
@@ -32,178 +65,150 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
           </div>
-          <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
+          <button
+            onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }}
+            className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block"
+          >
             Get in Touch
           </button>
         </div>
       </nav>
 
       <main className="flex-grow pt-16">
-        {/* Hero Section */}
-        <section className="relative min-h-[614px] flex items-center overflow-hidden bg-surface">
-          <div className="absolute inset-0 z-0 opacity-40">
-            <div className="absolute inset-0 bg-gradient-to-r from-surface to-transparent z-10"></div>
-            <img 
-              alt="Neural Network Visualization" 
-              className="w-full h-full object-cover grayscale" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9kLH5OAKFYgMRGnbXmECNGoTsmBBuDPpjsLQMRl1nqp8paVbSRt4gCwjLjKTauKaZY2isR4__LIPRA4RCQJV1Uh01B9hEWj4OMK6y9eDGSBFy9M5I3vtlh2jhpcPP8TaYCnqbQb22__oxg3BJs-pa3lvwhBj-WYms-a1nccQWKPppyQPaTwWnzd4cuiIaIAYugGqUhdxyR-HO6dJi1tZJVApWQ81Vz19ZmLSCVzkGfPG2lM5afqIDxKoqEVXXsb3h0xZSlvDhMSrW"
-              referrerPolicy="no-referrer"
-            />
+
+        {/* ── Hero ── */}
+        <section className="relative min-h-[680px] flex flex-col justify-center px-8 md:px-16 lg:px-24 overflow-hidden border-b border-outline-variant/15">
+          {/* Ambient glows */}
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"></div>
+            <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-secondary/15 rounded-full blur-[120px]"></div>
           </div>
-          <div className="container mx-auto px-8 relative z-20">
-            <motion.div 
+
+          <div className="relative z-10 max-w-screen-2xl mx-auto w-full">
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="max-w-3xl"
+              className="max-w-4xl space-y-8"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 bg-surface-container-high text-secondary text-xs uppercase tracking-widest font-bold">
-                <span className="w-2 h-2 bg-secondary block"></span>
-                Algorithmic Solutions
+              <div className="inline-flex items-center gap-2">
+                <span className="w-8 h-[2px] bg-secondary"></span>
+                <span className="text-secondary text-[10px] tracking-[0.35em] uppercase font-bold">Generative AI Offering</span>
               </div>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 text-on-surface leading-none uppercase">
-                AI Integration
+
+              <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.92] text-on-surface uppercase">
+                Culturally Accurate,<br />
+                <span className="text-primary">On-Brand</span> AI<br />
+                Creative at Scale.
               </h1>
-              <p className="text-xl md:text-2xl text-on-surface-variant font-medium tracking-tight max-w-xl">
-                Smarter automation for high-speed results. Architecting the future of computational efficiency.
+
+              <p className="text-xl md:text-2xl text-on-surface-variant max-w-2xl font-light leading-relaxed">
+                A creative and strategy-led generative AI offering for brands, agencies, and communications teams.
               </p>
+
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }}
+                className="inline-flex items-center gap-4 bg-gradient-to-r from-primary to-primary-container text-on-primary px-10 py-5 font-bold text-sm tracking-widest uppercase hover:brightness-110 transition-all group"
+              >
+                Build Your AI Workflow
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+              </motion.button>
             </motion.div>
           </div>
         </section>
 
-        {/* Core Pillars Section (Asymmetric Bento Grid) */}
-        <section className="py-24 bg-surface-container-low">
-          <div className="container mx-auto px-8">
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-1 items-start border border-outline-variant/10">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="md:col-span-4 p-12 bg-surface text-left h-full"
-              >
-                <Brain className="text-primary w-10 h-10 mb-6" />
-                <h3 className="text-2xl font-bold mb-4 tracking-tight uppercase">Custom LLMs</h3>
-                <p className="text-on-surface-variant leading-relaxed">
-                  Proprietary language models engineered for your specific domain knowledge and security requirements.
-                </p>
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="md:col-span-8 p-12 bg-surface-container-highest text-left h-full"
-              >
-                <Sparkles className="text-secondary w-10 h-10 mb-6" />
-                <h3 className="text-2xl font-bold mb-4 tracking-tight uppercase">Automated Content</h3>
-                <p className="text-on-surface-variant leading-relaxed mb-6">
-                  High-fidelity generative systems that maintain brand integrity while scaling production 10x.
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="flex items-center gap-2 text-sm text-secondary font-bold uppercase tracking-widest">
-                    <CheckCircle className="w-4 h-4" /> Context Aware
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-secondary font-bold uppercase tracking-widest">
-                    <CheckCircle className="w-4 h-4" /> Multi-format Output
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="md:col-span-12 p-12 bg-primary-container flex flex-col md:flex-row justify-between items-center gap-8"
-              >
-                <div className="max-w-2xl">
-                  <Zap className="text-on-primary-container w-10 h-10 mb-6" />
-                  <h3 className="text-3xl font-black mb-4 tracking-tight text-on-primary-container uppercase">Workflow Scaling</h3>
-                  <p className="text-on-primary-container/80 text-lg leading-relaxed">
-                    Deploy intelligent agents that handle complex decision logic, removing bottlenecks in your operational pipeline.
-                  </p>
-                </div>
-                <div className="text-right">
-                  <div className="text-5xl font-black text-on-primary-container">94%</div>
-                  <div className="text-[10px] uppercase tracking-widest text-on-primary-container/60 font-bold">Efficiency Gain</div>
-                </div>
-              </motion.div>
+        {/* ── Core Capacities (6 Pillars) ── */}
+        <section className="py-24 px-8 md:px-16 lg:px-24 bg-surface-container-low">
+          <div className="max-w-screen-2xl mx-auto">
+            <div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-8 h-[2px] bg-secondary"></span>
+                <span className="text-secondary text-[10px] tracking-[0.35em] uppercase font-bold">Core Capacities</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black tracking-tighter uppercase">Bridging Visual Production &amp; AI Enablement</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-outline-variant/10">
+              {pillars.map(({ icon: Icon, title, body }, i) => (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="group p-10 bg-surface-container-high hover:bg-surface-bright transition-colors border-l-2 border-transparent hover:border-secondary"
+                >
+                  <Icon className="text-primary w-8 h-8 mb-6" />
+                  <h3 className="text-lg font-bold mb-3 tracking-tight uppercase">{title}</h3>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">{body}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* CTA & Consultation Form Section */}
-        <section className="py-24 bg-surface">
-          <div className="container mx-auto px-8">
-            <div className="flex flex-col lg:flex-row gap-16">
-              {/* Left: Text/CTA */}
-              <div className="lg:w-1/2">
-                <h2 className="text-5xl font-black tracking-tighter mb-8 leading-tight uppercase">
-                  Ready for AI?
-                </h2>
-                <p className="text-on-surface-variant text-lg mb-12 max-w-md">
-                  Schedule a high-precision audit of your current digital infrastructure and discover immediate integration opportunities.
-                </p>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 flex items-center justify-center bg-surface-container-high text-tertiary font-bold">1</div>
-                    <div>
-                      <h4 className="font-bold text-on-surface uppercase tracking-tight">Data Assessment</h4>
-                      <p className="text-sm text-on-surface-variant">We evaluate your current dataset readiness for model training.</p>
-                    </div>
+        {/* ── CTA ── */}
+        <section className="py-32 px-8 md:px-16 lg:px-24 relative overflow-hidden">
+          <div className="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+          <div className="max-w-screen-2xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+            <div>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-6 leading-tight">
+                Ready to Architect Your<br />
+                <span className="text-secondary">AI Content Strategy?</span>
+              </h2>
+              <p className="text-on-surface-variant text-lg mb-10 max-w-md leading-relaxed">
+                Get in touch to schedule a demo of our custom brand-trained systems and explore how we can scale your production.
+              </p>
+              <button
+                onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }}
+                className="inline-flex items-center gap-4 px-10 py-5 bg-primary text-on-primary font-bold uppercase tracking-widest text-sm hover:brightness-110 transition-all group rounded-none"
+              >
+                Get in Touch
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+              </button>
+            </div>
+
+            <div className="bg-surface-container-high p-10 border-l-4 border-secondary">
+              <h3 className="text-xl font-black tracking-tighter uppercase mb-8">Initialize Consultation</h3>
+              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">First Name</label>
+                    <input className="w-full bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary text-sm px-4 py-3 outline-none placeholder:text-outline/40" placeholder="First name" type="text" />
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 flex items-center justify-center bg-surface-container-high text-tertiary font-bold">2</div>
-                    <div>
-                      <h4 className="font-bold text-on-surface uppercase tracking-tight">Prototype Phase</h4>
-                      <p className="text-sm text-on-surface-variant">Rapid deployment of a focused AI agent in your sandbox.</p>
-                    </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Last Name</label>
+                    <input className="w-full bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary text-sm px-4 py-3 outline-none placeholder:text-outline/40" placeholder="Last name" type="text" />
                   </div>
                 </div>
-              </div>
-              {/* Right: Form */}
-              <div className="lg:w-1/2 bg-surface-container-lowest p-12 border-l-4 border-primary shadow-2xl">
-                <h3 className="text-2xl font-bold mb-8 tracking-tight uppercase">Begin Consultation</h3>
-                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                  <div>
-                    <label className="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Company Name</label>
-                    <input className="w-full bg-surface-container-highest border-none focus:ring-2 focus:ring-primary text-on-surface py-4 px-4 outline-none" placeholder="ENTER ENTITY NAME" type="text"/>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Work Email</label>
-                      <input className="w-full bg-surface-container-highest border-none focus:ring-2 focus:ring-primary text-on-surface py-4 px-4 outline-none" placeholder="DEPT@ORG.COM" type="email"/>
-                    </div>
-                    <div>
-                      <label className="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Project Scope</label>
-                      <select className="w-full bg-surface-container-highest border-none focus:ring-2 focus:ring-primary text-on-surface py-4 px-4 outline-none">
-                        <option>Select Scope</option>
-                        <option>Enterprise LLM</option>
-                        <option>Workflow Automation</option>
-                        <option>Content Engine</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Technical Requirements</label>
-                    <textarea className="w-full bg-surface-container-highest border-none focus:ring-2 focus:ring-primary text-on-surface py-4 px-4 h-32 outline-none resize-none" placeholder="OUTLINE ARCHITECTURAL NEEDS..."></textarea>
-                  </div>
-                  <button className="w-full bg-primary text-on-primary font-black py-5 uppercase tracking-widest hover:brightness-110 transition-colors">
-                    Submit for Review
-                  </button>
-                </form>
-              </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Business Email</label>
+                  <input className="w-full bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary text-sm px-4 py-3 outline-none placeholder:text-outline/40" placeholder="you@company.com" type="email" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant">Project Inquiry</label>
+                  <textarea className="w-full bg-surface-container-lowest border-none focus:ring-1 focus:ring-primary text-sm px-4 py-3 outline-none resize-none placeholder:text-outline/40" placeholder="How can we help you scale your creative?" rows={4}></textarea>
+                </div>
+                <button className="w-full bg-secondary text-on-secondary font-black py-4 text-xs tracking-[0.2em] uppercase hover:brightness-110 transition-colors" type="submit">
+                  Submit Inquiry
+                </button>
+              </form>
             </div>
+
           </div>
         </section>
+
       </main>
 
       {/* Footer */}
       <footer className="bg-slate-950 border-t border-slate-800/30">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
-            <img 
-              alt="Relativ Connect logo" 
-              className="h-8 w-auto mb-4 opacity-80"
-              src="/logo.png"
-            />
+            <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
             <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
@@ -212,6 +217,7 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
           </div>
         </div>
       </footer>
+
     </div>
   );
 };
