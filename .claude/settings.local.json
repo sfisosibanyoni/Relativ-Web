@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"C:/Users/Sfiso/Desktop/Relativwebsite/Relativ-Web/public\")",
+      "Bash(cp \"C:/Users/Sfiso/Downloads/relativlogoupscale.png\" \"C:/Users/Sfiso/Desktop/Relativwebsite/Relativ-Web/public/logo.png\")"
+    ]
+  }
+}

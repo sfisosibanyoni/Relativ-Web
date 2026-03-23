@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 interface CaseStudyPageProps {
-  onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms') => void;
+  onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void;
 }
 
 const Counter = ({ value, duration = 2, prefix = "", suffix = "" }: { value: number, duration?: number, prefix?: string, suffix?: string }) => {
@@ -46,55 +46,119 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
       {/* TopNavBar */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
         <div className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
-          <div className="flex items-center gap-4 cursor-pointer group" onClick={() => onNavigate('home')}>
-            <img 
-              alt="Relativ Connect logo" 
-              className="h-8 w-auto transition-transform group-hover:scale-110" 
-              src="/api/attachments/1742638035189"
-            />
-            <span className="text-xl font-bold tracking-tighter text-primary">Relativ Connect</span>
+          <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
+            <img src="/logo.png" alt="Relativ Connect" className="h-10 w-auto" />
           </div>
           <div className="hidden md:flex items-center gap-8 font-medium tracking-tight">
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Capabilities</button>
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
           </div>
-          <button onClick={() => onNavigate('home')} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
-            Start a Project
+          <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
+            Get in Touch
           </button>
         </div>
       </nav>
 
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="relative h-[921px] flex items-end overflow-hidden">
-          <motion.div 
-            style={{ y: yBg }}
-            className="absolute inset-0 z-0"
-          >
-            <img 
-              className="w-full h-full object-cover opacity-50 scale-110" 
-              src="https://lh3.googleusercontent.com/d/1D_r_2_W-2_W-2_W-2_W-2_W-2_W-2_W-2_W"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
-          </motion.div>
-          <div className="relative z-10 w-full px-8 pb-24 md:px-16 lg:px-24">
-            <motion.div 
-              style={{ y: yText, opacity: opacityText }}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col gap-4 max-w-5xl"
-            >
-              <span className="text-xs text-secondary uppercase tracking-[0.2em] font-semibold">Project Case Study</span>
-              <h1 className="text-5xl md:text-8xl font-bold tracking-tighter leading-none text-on-background">
-                IATF 2025 <br/>
-                <span className="text-primary">PAN-AFRICAN</span> TRADE.
-              </h1>
-              <p className="text-xl md:text-2xl text-on-surface-variant max-w-2xl mt-6">
+        <section className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden">
+
+          {/* Left — Copy */}
+          <div className="relative z-10 flex flex-col justify-between w-full lg:w-1/2 px-8 md:px-16 lg:px-24 py-24 bg-surface">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="flex items-center gap-3 mb-10"
+              >
+                <span className="w-8 h-[2px] bg-primary"></span>
+                <span className="text-[10px] uppercase tracking-[0.35em] text-primary font-bold">Project Case Study</span>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+                className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase mb-8"
+              >
+                IATF<br/>
+                2025<br/>
+                <span className="text-primary">Pan-African</span><br/>
+                Trade.
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-lg text-on-surface-variant max-w-md leading-relaxed mb-12"
+              >
                 Architecting the largest intra-African trade exchange through strategic marketing precision and continental reach.
-              </p>
+              </motion.p>
+
+              {/* Meta tags */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.55 }}
+                className="flex flex-wrap gap-3"
+              >
+                {['Lead Marketing Agency', '55 Countries', 'B2B + B2C', 'IATF 2025'].map((tag) => (
+                  <span key={tag} className="text-[10px] uppercase tracking-widest font-bold px-4 py-2 border border-outline-variant/30 text-on-surface-variant">
+                    {tag}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Bottom stat strip */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              className="flex gap-12 mt-16 pt-8 border-t border-outline-variant/20"
+            >
+              <div>
+                <div className="text-3xl font-black text-primary">$48B</div>
+                <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mt-1">Trade Facilitated</div>
+              </div>
+              <div>
+                <div className="text-3xl font-black text-primary">4M+</div>
+                <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mt-1">DOOH Impressions</div>
+              </div>
+              <div>
+                <div className="text-3xl font-black text-primary">132</div>
+                <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mt-1">Countries</div>
+              </div>
             </motion.div>
           </div>
+
+          {/* Right — Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen overflow-hidden"
+          >
+            <motion.img
+              style={{ y: yBg }}
+              src="/iatf-casestudy.jpg"
+              alt="IATF 2025 — The AfCFTA Marketplace"
+              className="absolute inset-0 w-full h-full object-cover scale-110"
+            />
+            {/* Edge gradient blending into left panel */}
+            <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/10 to-transparent lg:block hidden"></div>
+            {/* Bottom fade */}
+            <div className="absolute inset-0 bg-gradient-to-t from-surface/60 via-transparent to-transparent"></div>
+
+            {/* Floating label */}
+            <div className="absolute bottom-8 right-8 bg-black/70 backdrop-blur-sm px-5 py-3 border border-white/10">
+              <p className="text-[10px] uppercase tracking-widest text-white/70 font-bold">Algiers, Algeria — 2025</p>
+            </div>
+          </motion.div>
+
         </section>
 
         {/* Role Overview */}
@@ -253,15 +317,14 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
           <div className="mb-8 md:mb-0">
             <img 
               alt="Relativ Connect logo" 
-              className="h-8 w-auto mb-4 brightness-0 invert opacity-80" 
-              src="/api/attachments/1742638035189"
+              className="h-8 w-auto mb-4 opacity-80"
+              src="/logo.png"
             />
-            <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500">© 2025 Relativ Connect. All rights reserved. Built for technical authority.</p>
+            <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500">© 2025 Relativ Connect. All rights reserved.</p>
           </div>
           <div className="flex flex-wrap gap-8 justify-center">
-            {['Privacy Policy', 'Terms of Service', 'Cookie Settings'].map((link) => (
-              <a key={link} className="text-[10px] uppercase tracking-widest font-bold text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">{link}</a>
-            ))}
+            <button onClick={() => onNavigate('privacy-policy')} className="text-[10px] uppercase tracking-widest font-bold text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
+            <button onClick={() => onNavigate('terms-of-service')} className="text-[10px] uppercase tracking-widest font-bold text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
             <a className="text-slate-500 hover:text-primary transition-colors" href="#"><Instagram className="w-4 h-4" /></a>
           </div>
         </div>

@@ -11,7 +11,7 @@ import {
 import { useEffect } from "react";
 
 interface MarketingCommsPageProps {
-  onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms') => void;
+  onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void;
 }
 
 const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
@@ -24,21 +24,16 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
       {/* TopNavBar */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
         <div className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
-          <div className="flex items-center gap-4 cursor-pointer group" onClick={() => onNavigate('home')}>
-            <img 
-              alt="Relativ Connect logo" 
-              className="h-8 w-auto transition-transform group-hover:scale-110" 
-              src="/api/attachments/1742638035189"
-            />
-            <span className="text-xl font-bold tracking-tighter text-primary">Relativ Connect</span>
+          <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
+            <img src="/logo.png" alt="Relativ Connect" className="h-10 w-auto" />
           </div>
           <div className="hidden md:flex items-center gap-8 font-medium tracking-tight">
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Capabilities</button>
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
           </div>
-          <button onClick={() => onNavigate('home')} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
-            Start a Project
+          <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
+            Get in Touch
           </button>
         </div>
       </nav>
@@ -231,15 +226,14 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
           <div className="mb-8 md:mb-0">
             <img 
               alt="Relativ Connect logo" 
-              className="h-8 w-auto mb-4 brightness-0 invert opacity-80" 
-              src="/api/attachments/1742638035189"
+              className="h-8 w-auto mb-4 opacity-80"
+              src="/logo.png"
             />
-            <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect. Architectural Precision in Data.</p>
+            <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
-            {['Privacy Policy', 'Terms of Service'].map((link) => (
-              <a key={link} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">{link}</a>
-            ))}
+            <button onClick={() => onNavigate('privacy-policy')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
+            <button onClick={() => onNavigate('terms-of-service')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
           </div>
         </div>
       </footer>

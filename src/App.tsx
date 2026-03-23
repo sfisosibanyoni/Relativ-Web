@@ -15,12 +15,14 @@ import StrategyPage from "./StrategyPage";
 import DesignCreativePage from "./DesignCreativePage";
 import AISolutionsPage from "./AISolutionsPage";
 import MarketingCommsPage from "./MarketingCommsPage";
+import PrivacyPolicyPage from "./PrivacyPolicyPage";
+import TermsOfServicePage from "./TermsOfServicePage";
 
-const Navbar = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms') => void }) => (
+const Navbar = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void }) => (
   <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
     <div className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
-      <div className="flex items-center gap-4 cursor-pointer group" onClick={() => onNavigate('home')}>
-        <span className="text-xl font-bold tracking-tighter text-primary">Relativ Connect</span>
+      <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
+        <img src="/logo.png" alt="Relativ Connect" className="h-10 w-auto" />
       </div>
       <div className="hidden md:flex items-center gap-8 font-medium tracking-tight">
         <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('capabilities')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-slate-100 transition-colors">Capabilities</button>
@@ -50,16 +52,15 @@ const Hero = () => {
     <section 
       className="relative min-h-[600px] lg:min-h-[700px] flex items-center px-8 py-16 lg:py-24 overflow-hidden"
     >
-      <motion.div 
+      <motion.div
         style={{ y: yBg }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-surface/90 via-surface/60 to-transparent z-10"></div>
-        <img 
-          className="w-full h-full object-cover" 
-          src="/api/attachments/1742636356300"
-          referrerPolicy="no-referrer"
+        <div
+          className="w-full h-full"
+          style={{ backgroundImage: 'url(/hero-bg.png)', backgroundRepeat: 'repeat', backgroundSize: '2400px auto' }}
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/60 z-10"></div>
       </motion.div>
       
       <motion.div 
@@ -124,7 +125,7 @@ const CapabilityCard = ({ icon: Icon, title, description, colorClass, onClick }:
   </motion.div>
 );
 
-const Capabilities = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms') => void }) => (
+const Capabilities = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void }) => (
   <section id="capabilities" className="py-24 px-8 bg-surface-container-low">
     <div className="max-w-screen-2xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
@@ -167,7 +168,7 @@ const Capabilities = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study'
   </section>
 );
 
-const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms') => void }) => {
+const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -193,7 +194,7 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
             </div>
             <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">Case Study: IATF 2025</h2>
             <h3 className="text-2xl md:text-3xl text-on-surface-variant font-medium mb-10">Pan-African Trade Promotion</h3>
-            <div className="grid grid-cols-2 gap-8 mb-12 max-w-md">
+            <div className="grid grid-cols-3 gap-8 mb-12 max-w-xl">
               <div>
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-1">$48B</div>
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Trade deals facilitated</div>
@@ -201,6 +202,10 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
               <div className="border-l border-outline-variant/30 pl-8">
                 <div className="text-4xl md:text-5xl font-bold text-primary mb-1">4M+</div>
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Verified DOOH Impressions</div>
+              </div>
+              <div className="border-l border-outline-variant/30 pl-8">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-1">100K+</div>
+                <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Visitors online and in-person</div>
               </div>
             </div>
             <button 
@@ -218,11 +223,10 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
             viewport={{ once: true }}
             className="relative aspect-[4/3] group overflow-hidden border border-outline-variant/20"
           >
-            <img 
-              src="https://picsum.photos/seed/trade/800/600" 
-              alt="IATF 2025 Case Study" 
-              className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100"
-              referrerPolicy="no-referrer"
+            <img
+              src="/iatf-casestudy.jpg"
+              alt="IATF 2025 Case Study"
+              className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100 grayscale group-hover:grayscale-0"
             />
             <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-700"></div>
           </motion.div>
@@ -233,18 +237,18 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
 };
 
 const MotherAgencyBanner = () => (
-  <section id="mother-agency" className="py-24 px-8 bg-surface-container-low border-t border-outline-variant/10">
+  <section id="mother-agency" className="py-10 px-8 bg-surface-container-low border-t border-outline-variant/10">
     <div className="max-w-screen-2xl mx-auto">
       <div className="glass-panel p-8 md:p-12 flex flex-col lg:flex-row items-center justify-between gap-10 border border-white/5 relative overflow-hidden group">
         {/* Subtle Red Glow */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#e31e24]/10 rounded-full blur-[120px] -mr-48 -mt-48 pointer-events-none" />
-        
+
         <div className="flex flex-col md:flex-row items-center gap-10 relative z-10">
-          <div className="w-32 h-32 bg-white/5 backdrop-blur-md p-6 flex items-center justify-center border border-white/10 group-hover:border-[#e31e24]/30 transition-colors duration-500">
-            <img 
-              alt="Relativ Media logo" 
-              className="w-full h-auto brightness-0 invert opacity-60 group-hover:opacity-100 transition-all duration-500" 
-              src="/api/attachments/1742638035189"
+          <div className="bg-white/5 backdrop-blur-md p-6 flex items-center justify-center border border-white/10 group-hover:border-[#e31e24]/30 transition-colors duration-500">
+            <img
+              alt="Relativ Media logo"
+              className="w-56 h-auto opacity-70 group-hover:opacity-100 transition-all duration-500"
+              src="/relativ-media-logo.png"
             />
           </div>
           <div className="text-center md:text-left">
@@ -259,9 +263,9 @@ const MotherAgencyBanner = () => (
           </div>
         </div>
 
-        <a 
-          href="https://www.relativmedia.co.za" 
-          target="_blank" 
+        <a
+          href="https://www.relativmedia.co.za"
+          target="_blank"
           rel="noopener noreferrer"
           className="relative z-10 inline-flex items-center gap-4 px-12 py-6 bg-[#e31e24] text-white font-bold uppercase tracking-widest text-xs hover:shadow-[0_0_30px_rgba(227,30,36,0.3)] hover:brightness-110 transition-all group rounded-none"
         >
@@ -392,23 +396,23 @@ const Contact = () => (
   </section>
 );
 
-const Footer = () => (
+const Footer = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void }) => (
   <footer className="bg-slate-950 border-t border-slate-800/30">
     <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
       <div className="mb-8 md:mb-0">
-        <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect. Architectural Precision in Data.</p>
+        <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
+        <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect.</p>
       </div>
       <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
-        {['Privacy Policy', 'Terms of Service'].map((link) => (
-          <a key={link} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100" href="#">{link}</a>
-        ))}
+        <button onClick={() => onNavigate('privacy-policy')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
+        <button onClick={() => onNavigate('terms-of-service')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
       </div>
     </div>
   </footer>
 );
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service'>('home');
 
   useEffect(() => {
     if (window.location.hash && currentPage === 'home') {
@@ -442,6 +446,14 @@ export default function App() {
     return <MarketingCommsPage onNavigate={setCurrentPage} />;
   }
 
+  if (currentPage === 'privacy-policy') {
+    return <PrivacyPolicyPage onNavigate={setCurrentPage} />;
+  }
+
+  if (currentPage === 'terms-of-service') {
+    return <TermsOfServicePage onNavigate={setCurrentPage} />;
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar onNavigate={setCurrentPage} />
@@ -452,7 +464,7 @@ export default function App() {
         <MotherAgencyBanner />
         <Contact />
       </main>
-      <Footer />
+      <Footer onNavigate={setCurrentPage} />
     </div>
   );
 }
