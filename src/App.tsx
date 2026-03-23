@@ -130,8 +130,8 @@ const Capabilities = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study'
     <div className="max-w-screen-2xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
         <div>
-          <h2 className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant mb-2">Our Capabilities</h2>
-          <h3 className="text-4xl font-black tracking-tighter uppercase">What We Do</h3>
+          <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant mb-2">Our Capabilities</p>
+          <h2 className="text-4xl font-black tracking-tighter uppercase">What We Do</h2>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
@@ -179,9 +179,11 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
   return (
     <section id="work" ref={ref} className="relative py-32 px-8 overflow-hidden bg-surface-container-lowest border-t border-outline-variant/10">
       <motion.div style={{ y }} className="absolute right-0 top-0 w-1/2 h-full opacity-30 pointer-events-none">
-        <img 
-          className="w-full h-full object-cover" 
+        <img
+          className="w-full h-full object-cover"
           src="https://lh3.googleusercontent.com/d/1A_r_2_W-2_W-2_W-2_W-2_W-2_W-2_W-2_W"
+          alt=""
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-l from-transparent via-surface-container-lowest/80 to-surface-container-lowest"></div>
       </motion.div>
@@ -397,7 +399,7 @@ const Contact = () => (
 );
 
 const Footer = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void }) => (
-  <footer className="bg-slate-950 border-t border-slate-800/30">
+  <footer className="bg-black border-t border-slate-800/30">
     <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
       <div className="mb-8 md:mb-0">
         <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
@@ -415,12 +417,14 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service'>('home');
 
   useEffect(() => {
-    if (window.location.hash && currentPage === 'home') {
-      const id = window.location.hash.substring(1);
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        return;
+    if (currentPage === 'home') {
+      document.title = "Relativ Connect | Full-Service Marketing Agency | South Africa";
+      const desc = document.querySelector('meta[name="description"]');
+      if (desc) desc.setAttribute("content", "Relativ Connect is a full-service marketing agency combining creative strategy, generative AI, media placement, and integrated communications. Pan-African reach backed by Relativ Media's 900+ OOH assets.");
+      if (window.location.hash) {
+        const id = window.location.hash.substring(1);
+        const element = document.getElementById(id);
+        if (element) { element.scrollIntoView({ behavior: 'smooth' }); return; }
       }
     }
     window.scrollTo(0, 0);

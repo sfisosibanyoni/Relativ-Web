@@ -49,7 +49,12 @@ const pillars = [
 
 
 const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Generative AI Creative Services | Relativ Connect";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Culturally accurate, on-brand AI creative at scale. Bespoke image libraries, on-brand prompt systems, and AI strategy consulting for brands and agencies across Africa.");
+  }, []);
 
   return (
     <div className="bg-surface text-on-surface font-sans selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
@@ -205,7 +210,7 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-slate-800/30">
+      <footer className="bg-black border-t border-slate-800/30">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />

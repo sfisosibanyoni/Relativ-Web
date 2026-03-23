@@ -17,6 +17,9 @@ interface StrategyPageProps {
 const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Marketing Strategy & Consulting | Relativ Connect";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Practical, technology-driven marketing roadmaps that help your business grow. Strategic consulting tailored for brands operating across African markets.");
   }, []);
 
   return (
@@ -168,7 +171,7 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-slate-800/30">
+      <footer className="bg-black border-t border-slate-800/30">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img 

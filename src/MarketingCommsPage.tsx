@@ -17,6 +17,9 @@ interface MarketingCommsPageProps {
 const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "Marketing & Communications | Relativ Connect";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Full-scale integrated marketing campaigns and event production. Connecting brands with the right audience across South Africa and the African continent.");
   }, []);
 
   return (
@@ -221,7 +224,7 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-slate-800/30">
+      <footer className="bg-black border-t border-slate-800/30">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img 

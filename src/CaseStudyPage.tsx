@@ -41,6 +41,13 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
   const yText = useTransform(scrollY, [0, 1000], [0, -100]);
   const opacityText = useTransform(scrollY, [0, 600], [1, 0]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "IATF 2025 Case Study — Pan-African Trade Campaign | Relativ Connect";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "How Relativ Connect served as lead marketing agency for IATF 2025, driving $48B in trade facilitation, 4M+ DOOH impressions, and 100K+ visitors across 132 countries.");
+  }, []);
+
   return (
     <div className="bg-surface text-on-surface font-sans selection:bg-primary selection:text-on-primary">
       {/* TopNavBar */}
@@ -193,9 +200,11 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
           <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
             {/* Large Primary Stat */}
             <div className="md:col-span-2 md:row-span-2 bg-primary-container p-12 flex flex-col justify-between group overflow-hidden relative">
-              <img 
-                className="absolute inset-0 w-full h-full object-cover opacity-20 transition-transform duration-700 group-hover:scale-110" 
+              <img
+                className="absolute inset-0 w-full h-full object-cover opacity-20 transition-transform duration-700 group-hover:scale-110"
                 src="https://lh3.googleusercontent.com/d/1E_r_2_W-2_W-2_W-2_W-2_W-2_W-2_W-2_W"
+                alt=""
+                aria-hidden="true"
               />
               <div className="relative z-10">
                 <CreditCard className="w-12 h-12 mb-6 text-on-primary-container" />
@@ -312,7 +321,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-950 w-full border-t border-slate-800/30">
+      <footer className="bg-black w-full border-t border-slate-800/30">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img 

@@ -12,6 +12,13 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 export default function TermsOfServicePage({ onNavigate }: LegalPageProps) {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Terms of Service | Relativ Connect";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Terms of Service for Relativ Connect (Pty) Ltd — governing the use of our website and services under South African law including the CPA and ECTA.");
+  }, []);
+
   return (
     <div className="bg-surface text-on-surface font-sans min-h-screen">
       {/* Navbar */}

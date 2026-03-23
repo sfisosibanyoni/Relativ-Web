@@ -15,7 +15,12 @@ interface MediaPlacementPageProps {
 }
 
 const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = "Precision Media Placement & Architecture | Relativ Connect";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Strategic media placement across OOH, TV, radio, digital, and programmatic channels — unified with Relativ Media's 900+ physical assets for true omni-channel reach.");
+  }, []);
 
   return (
     <div className="bg-surface text-on-surface font-sans selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
@@ -302,7 +307,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-slate-800/30">
+      <footer className="bg-black border-t border-slate-800/30">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
