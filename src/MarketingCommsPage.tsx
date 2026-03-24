@@ -14,8 +14,10 @@ import {
   TrendingUp,
   CheckCircle,
 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+
+const SPOT = 800;
 
 interface MarketingCommsPageProps {
   onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void;
@@ -153,6 +155,13 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
     if (desc) desc.setAttribute("content", "Full-service 360 degree marketing and communications agency. Brand strategy, campaigns, design, digital, events, PR, internal communications and more.");
   }, []);
 
+  const [mouse, setMouse] = useState({ x: -SPOT, y: -SPOT });
+  const handleMouseMove = (e: { currentTarget: HTMLElement; clientX: number; clientY: number }) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+  const handleMouseLeave = () => setMouse({ x: -SPOT, y: -SPOT });
+
   const goContact = () => {
     onNavigate('home');
     setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
@@ -166,14 +175,28 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
       <main className="flex-grow pt-16">
 
         {/* ── Hero ── */}
-        <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-surface-container-lowest">
-          {/* Ambient glows */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px]"></div>
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px]"></div>
+        <section
+          className="relative min-h-[75vh] flex items-center overflow-hidden"
+          onMouseMove={handleMouseMove as any}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Background */}
+          <div className="absolute inset-0 z-0">
+            <div className="w-full h-full" style={{ backgroundImage: 'url(/hero-bg.png)', backgroundRepeat: 'repeat', backgroundSize: '2400px auto' }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/60"></div>
           </div>
+          {/* Spotlight */}
+          <div
+            className="absolute pointer-events-none z-[15] rounded-full"
+            style={{
+              width: SPOT, height: SPOT, top: 0, left: 0,
+              background: 'radial-gradient(circle, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)',
+              transform: `translate(${mouse.x - SPOT / 2}px, ${mouse.y - SPOT / 2}px)`,
+              transition: 'transform 0.1s ease-out',
+            }}
+          />
 
-          <div className="relative z-10 max-w-screen-2xl mx-auto px-8 md:px-16 lg:px-24 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-24">
+          <div className="relative z-20 max-w-screen-2xl mx-auto px-8 md:px-16 lg:px-24 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-24">
 
             {/* Left copy */}
             <div>

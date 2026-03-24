@@ -168,9 +168,18 @@ const Counter = ({ value, duration = 2, prefix = "", suffix = "" }: { value: num
   return <span ref={ref}>{prefix}{displayValue}{suffix}</span>;
 };
 
+const SPOT = 800;
+
 const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
   const { scrollY } = useScroll();
   const yBg = useTransform(scrollY, [0, 1000], [0, 300]);
+
+  const [mouse, setMouse] = useState({ x: -SPOT, y: -SPOT });
+  const handleMouseMove = (e: { currentTarget: HTMLElement; clientX: number; clientY: number }) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+  const handleMouseLeave = () => setMouse({ x: -SPOT, y: -SPOT });
   const yText = useTransform(scrollY, [0, 1000], [0, -100]);
   const opacityText = useTransform(scrollY, [0, 600], [1, 0]);
 
@@ -187,10 +196,29 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
 
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden">
+        <section
+          className="relative min-h-screen flex flex-col lg:flex-row overflow-hidden"
+          onMouseMove={handleMouseMove as any}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Background */}
+          <div className="absolute inset-0 z-0">
+            <div className="w-full h-full" style={{ backgroundImage: 'url(/hero-bg.png)', backgroundRepeat: 'repeat', backgroundSize: '2400px auto' }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/40"></div>
+          </div>
+          {/* Spotlight */}
+          <div
+            className="absolute pointer-events-none z-[15] rounded-full"
+            style={{
+              width: SPOT, height: SPOT, top: 0, left: 0,
+              background: 'radial-gradient(circle, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)',
+              transform: `translate(${mouse.x - SPOT / 2}px, ${mouse.y - SPOT / 2}px)`,
+              transition: 'transform 0.1s ease-out',
+            }}
+          />
 
           {/* Left — Copy */}
-          <div className="relative z-10 flex flex-col justify-between w-full lg:w-1/2 px-8 md:px-16 lg:px-24 py-24 bg-surface">
+          <div className="relative z-20 flex flex-col justify-between w-full lg:w-1/2 px-8 md:px-16 lg:px-24 py-24">
             <div>
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
@@ -265,7 +293,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-            className="relative w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen overflow-hidden"
+            className="relative z-10 w-full lg:w-1/2 min-h-[50vh] lg:min-h-screen overflow-hidden"
           >
             <motion.img
               style={{ y: yBg }}
@@ -274,9 +302,9 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
               className="absolute inset-0 w-full h-full object-cover scale-110"
             />
             {/* Edge gradient blending into left panel */}
-            <div className="absolute inset-0 bg-gradient-to-r from-surface via-surface/10 to-transparent lg:block hidden"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/20 to-transparent lg:block hidden"></div>
             {/* Bottom fade */}
-            <div className="absolute inset-0 bg-gradient-to-t from-surface/60 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
             {/* Floating label */}
             <div className="absolute bottom-8 right-8 bg-black/70 backdrop-blur-sm px-5 py-3 border border-white/10">

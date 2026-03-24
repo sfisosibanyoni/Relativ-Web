@@ -8,14 +8,23 @@ import {
   Mail,
   Instagram
 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+
+const SPOT = 800;
 
 interface StrategyPageProps {
   onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void;
 }
 
 const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
+  const [mouse, setMouse] = useState({ x: -SPOT, y: -SPOT });
+  const handleMouseMove = (e: { currentTarget: HTMLElement; clientX: number; clientY: number }) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+  const handleMouseLeave = () => setMouse({ x: -SPOT, y: -SPOT });
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Marketing Strategy & Consulting | Relativ Connect";
@@ -29,8 +38,27 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
 
       <main className="flex-grow pt-16">
         {/* Hero Section */}
-        <section className="relative h-[614px] flex items-center overflow-hidden bg-surface hero-mesh">
-          <div className="container mx-auto px-8 grid md:grid-cols-2 items-center gap-12">
+        <section
+          className="relative h-[614px] flex items-center overflow-hidden"
+          onMouseMove={handleMouseMove as any}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Background */}
+          <div className="absolute inset-0 z-0">
+            <div className="w-full h-full" style={{ backgroundImage: 'url(/hero-bg.png)', backgroundRepeat: 'repeat', backgroundSize: '2400px auto' }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/60"></div>
+          </div>
+          {/* Spotlight */}
+          <div
+            className="absolute pointer-events-none z-[15] rounded-full"
+            style={{
+              width: SPOT, height: SPOT, top: 0, left: 0,
+              background: 'radial-gradient(circle, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)',
+              transform: `translate(${mouse.x - SPOT / 2}px, ${mouse.y - SPOT / 2}px)`,
+              transition: 'transform 0.1s ease-out',
+            }}
+          />
+          <div className="container mx-auto px-8 grid md:grid-cols-2 items-center gap-12 relative z-20">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -51,7 +79,7 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
               transition={{ duration: 0.8 }}
               className="relative h-full hidden md:block"
             >
-              <div className="absolute inset-0 bg-surface-container-high transform translate-x-4 translate-y-4"></div>
+              <div className="absolute inset-0 bg-white/5 transform translate-x-4 translate-y-4"></div>
               <img 
                 alt="Architectural Visual" 
                 className="relative z-10 w-full h-80 object-cover grayscale opacity-80" 

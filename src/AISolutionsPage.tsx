@@ -8,8 +8,10 @@ import {
   Users,
   LineChart,
 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
+
+const SPOT = 800;
 
 interface AISolutionsPageProps {
   onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void;
@@ -50,6 +52,13 @@ const pillars = [
 
 
 const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
+  const [mouse, setMouse] = useState({ x: -SPOT, y: -SPOT });
+  const handleMouseMove = (e: { currentTarget: HTMLElement; clientX: number; clientY: number }) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+  const handleMouseLeave = () => setMouse({ x: -SPOT, y: -SPOT });
+
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Generative AI Creative Services | Relativ Connect";
@@ -65,14 +74,28 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
       <main className="flex-grow pt-16">
 
         {/* ── Hero ── */}
-        <section className="relative min-h-[680px] flex flex-col justify-center px-8 md:px-16 lg:px-24 overflow-hidden border-b border-outline-variant/15">
-          {/* Ambient glows */}
-          <div className="absolute inset-0 z-0 pointer-events-none">
-            <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"></div>
-            <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-secondary/15 rounded-full blur-[120px]"></div>
+        <section
+          className="relative min-h-[680px] flex flex-col justify-center px-8 md:px-16 lg:px-24 overflow-hidden"
+          onMouseMove={handleMouseMove as any}
+          onMouseLeave={handleMouseLeave}
+        >
+          {/* Background */}
+          <div className="absolute inset-0 z-0">
+            <div className="w-full h-full" style={{ backgroundImage: 'url(/hero-bg.png)', backgroundRepeat: 'repeat', backgroundSize: '2400px auto' }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/60"></div>
           </div>
+          {/* Spotlight */}
+          <div
+            className="absolute pointer-events-none z-[15] rounded-full"
+            style={{
+              width: SPOT, height: SPOT, top: 0, left: 0,
+              background: 'radial-gradient(circle, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)',
+              transform: `translate(${mouse.x - SPOT / 2}px, ${mouse.y - SPOT / 2}px)`,
+              transition: 'transform 0.1s ease-out',
+            }}
+          />
 
-          <div className="relative z-10 max-w-screen-2xl mx-auto w-full">
+          <div className="relative z-20 max-w-screen-2xl mx-auto w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
