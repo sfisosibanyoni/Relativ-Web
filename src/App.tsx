@@ -36,7 +36,7 @@ const Navbar = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'st
             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
           }, 100);
         }} 
-        className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block"
+        className="hidden md:inline-block bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none"
       >
         Get in Touch
       </button>
