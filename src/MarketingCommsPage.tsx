@@ -1,12 +1,18 @@
 import { motion } from "motion/react";
-import { 
-  ArrowRight, 
-  Rocket, 
-  Calendar, 
-  Users, 
+import {
+  ArrowRight,
+  Compass,
+  Megaphone,
+  Palette,
+  Globe,
+  Calendar,
+  Users,
   Camera,
-  Mail,
-  Instagram
+  MessageSquare,
+  Newspaper,
+  Share2,
+  TrendingUp,
+  CheckCircle,
 } from "lucide-react";
 import { useEffect } from "react";
 
@@ -14,17 +20,147 @@ interface MarketingCommsPageProps {
   onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void;
 }
 
+// ── Service definitions ───────────────────────────────────────────────────────
+const services = [
+  {
+    icon: Compass,
+    title: "Brand Strategy & Positioning",
+    body: "We figure out who you are, what you stand for, and how you want to show up in the world. Brand architecture, tone of voice, messaging frameworks. The stuff that holds everything else together.",
+    tags: ["Brand Audits", "Positioning", "Tone of Voice", "Brand Architecture"],
+    bg: "bg-primary-container",
+    iconColor: "text-on-primary-container",
+    tagColor: "bg-primary/20 text-primary",
+    col: "md:col-span-2",
+    row: "md:row-span-1",
+  },
+  {
+    icon: Megaphone,
+    title: "Campaign Management",
+    body: "Full-funnel ATL, BTL, and TTL campaigns, planned and executed from insight to impact. We handle the strategy, the buying, the execution, and the tracking.",
+    tags: ["ATL / BTL / TTL", "Media Planning", "Campaign Tracking"],
+    bg: "bg-surface-container-high",
+    iconColor: "text-secondary",
+    tagColor: "bg-secondary/10 text-secondary",
+    col: "md:col-span-1",
+    row: "md:row-span-1",
+  },
+  {
+    icon: Palette,
+    title: "Design & Creative Production",
+    body: "Visuals that actually stop people mid-scroll. Brand collateral, campaign artwork, motion graphics, and print, all produced to a high standard without cutting corners.",
+    tags: ["Brand Collateral", "Motion Graphics", "Print & Digital"],
+    bg: "bg-surface-container-high",
+    iconColor: "text-tertiary",
+    tagColor: "bg-tertiary/10 text-tertiary",
+    col: "md:col-span-1",
+    row: "md:row-span-1",
+  },
+  {
+    icon: Globe,
+    title: "Digital & Web",
+    body: "We design, build, and optimise your digital presence across websites and social ecosystems. Built to be found, built to convert, and built to grow with your business.",
+    tags: ["Web Design & Dev", "SEO & SEM", "Email Marketing", "Landing Pages"],
+    bg: "bg-surface-container-lowest",
+    iconColor: "text-primary",
+    tagColor: "bg-primary/10 text-primary",
+    col: "md:col-span-1",
+    row: "md:row-span-1",
+  },
+  {
+    icon: Calendar,
+    title: "Events & Activations",
+    body: "End-to-end event production, from intimate boardroom briefings to large-scale continental summits. We handle the logistics, the creative direction, and the on-ground execution.",
+    tags: ["Corporate Events", "Brand Activations", "Launches", "Exhibitions"],
+    bg: "bg-secondary/10",
+    iconColor: "text-secondary",
+    tagColor: "bg-secondary/20 text-secondary",
+    col: "md:col-span-2",
+    row: "md:row-span-1",
+  },
+  {
+    icon: Camera,
+    title: "Photography & Videography",
+    body: "High-quality visual content for brand, campaign, and event use. Our in-house production team delivers broadcast-quality output at any scale.",
+    tags: ["Brand Photography", "Corporate Video", "Event Coverage"],
+    bg: "bg-surface-container-high",
+    iconColor: "text-tertiary",
+    tagColor: "bg-tertiary/10 text-tertiary",
+    col: "md:col-span-1",
+    row: "md:row-span-1",
+  },
+  {
+    icon: MessageSquare,
+    title: "Internal Communications",
+    body: "Clear and engaging communication for your people. From CEO messaging and staff newsletters to change management campaigns, we make sure the right message actually lands.",
+    tags: ["Staff Newsletters", "CEO Comms", "Change Management", "Intranet Content"],
+    bg: "bg-primary/10",
+    iconColor: "text-primary",
+    tagColor: "bg-primary/15 text-primary",
+    col: "md:col-span-1",
+    row: "md:row-span-1",
+  },
+  {
+    icon: Newspaper,
+    title: "PR & Media Relations",
+    body: "We build your credibility through earned media. Strong narratives, real journalist relationships, and strategic placement in the conversations your audience is already having.",
+    tags: ["Press Releases", "Media Pitching", "Crisis Comms", "Thought Leadership"],
+    bg: "bg-surface-container-lowest",
+    iconColor: "text-secondary",
+    tagColor: "bg-secondary/10 text-secondary",
+    col: "md:col-span-1",
+    row: "md:row-span-1",
+  },
+  {
+    icon: Share2,
+    title: "Social Media Management",
+    body: "Consistent, always-on presence across all major platforms. Content calendars, community management, paid social, and monthly performance reporting so you always know what's working.",
+    tags: ["Content Strategy", "Community Mgmt", "Paid Social", "Analytics"],
+    bg: "bg-surface-container-high",
+    iconColor: "text-tertiary",
+    tagColor: "bg-tertiary/10 text-tertiary",
+    col: "md:col-span-1",
+    row: "md:row-span-1",
+  },
+  {
+    icon: Users,
+    title: "Influencer Management",
+    body: "We match your brand with the right voices, from micro to macro creators, based on genuine audience alignment rather than follower counts. Every partnership is tracked for real results.",
+    tags: ["Talent Sourcing", "Brief & Contract", "Performance Reporting"],
+    bg: "bg-surface-container-high",
+    iconColor: "text-primary",
+    tagColor: "bg-primary/10 text-primary",
+    col: "md:col-span-1",
+    row: "md:row-span-1",
+  },
+];
+
+const process = [
+  { step: "01", title: "Discover", body: "We get under the skin of your brand, your audience, and the competitive landscape." },
+  { step: "02", title: "Strategise", body: "We build a clear, practical plan that's tied to your actual business goals." },
+  { step: "03", title: "Create", body: "We produce the content and assets your campaign needs, across every format." },
+  { step: "04", title: "Deploy", body: "We get it live across every channel, at the right time, to the right people." },
+  { step: "05", title: "Measure", body: "We track what's working, report back honestly, and keep optimising." },
+];
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Marketing & Communications | Relativ Connect";
     const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", "Full-scale integrated marketing campaigns and event production. Connecting brands with the right audience across South Africa and the African continent.");
+    if (desc) desc.setAttribute("content", "Full-service 360 degree marketing and communications agency. Brand strategy, campaigns, design, digital, events, PR, internal communications and more.");
   }, []);
+
+  const goContact = () => {
+    onNavigate('home');
+    setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100);
+  };
 
   return (
     <div className="bg-surface text-on-surface font-sans selection:bg-primary selection:text-on-primary min-h-screen flex flex-col">
-      {/* TopNavBar */}
+
+      {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
         <div className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
           <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
@@ -35,203 +171,186 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
             <button onClick={() => onNavigate('home')} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
           </div>
-          <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
+          <button onClick={goContact} className="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none inline-block">
             Get in Touch
           </button>
         </div>
       </nav>
 
-      <main className="pt-16 min-h-screen">
-        {/* Hero Section: Asymmetric Architect Layout */}
-        <section className="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] border-b border-outline-variant/15">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="p-12 md:p-24 flex flex-col justify-center bg-surface"
-          >
-            <div className="mb-6 flex items-center gap-2">
-              <span className="h-px w-8 bg-secondary"></span>
-              <span className="text-secondary font-bold text-xs uppercase tracking-widest">Marketing & Communications</span>
+      <main className="flex-grow pt-16">
+
+        {/* ── Hero ── */}
+        <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-surface-container-lowest">
+          {/* Ambient glows */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px]"></div>
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px]"></div>
+          </div>
+
+          <div className="relative z-10 max-w-screen-2xl mx-auto px-8 md:px-16 lg:px-24 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-24">
+
+            {/* Left copy */}
+            <div>
+              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="flex items-center gap-3 mb-8">
+                <span className="w-8 h-[2px] bg-secondary"></span>
+                <span className="text-secondary text-[10px] tracking-[0.35em] uppercase font-bold">Marketing & Communications</span>
+              </motion.div>
+
+              <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }} className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase mb-8">
+                Where<br />
+                Strategy<br />
+                <span className="text-primary">Meets</span><br />
+                Story.
+              </motion.h1>
+
+              <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-xl text-on-surface-variant max-w-lg leading-relaxed mb-10">
+                We're a full-service marketing and communications partner. Brand strategy, creative production, digital, PR, events, internal communications and everything in between. One agency, every touchpoint.
+              </motion.p>
+
+              <motion.button initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.55 }} onClick={goContact} className="inline-flex items-center gap-4 bg-gradient-to-r from-primary to-primary-container text-on-primary px-10 py-5 font-bold text-sm tracking-widest uppercase hover:brightness-110 transition-all group">
+                Start a Conversation
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+              </motion.button>
             </div>
-            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-on-surface leading-none mb-8 uppercase">
-              360 Full <br/>Production
-            </h1>
-            <p className="text-xl md:text-2xl text-on-surface-variant max-w-lg font-light leading-relaxed">
-              Impactful narratives delivered with technical authority. We architect influence through precision execution.
-            </p>
-          </motion.div>
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="relative min-h-[400px] bg-surface-container-low overflow-hidden"
-          >
-            <img 
-              alt="Production Visual" 
-              className="absolute inset-0 w-full h-full object-cover grayscale opacity-60 mix-blend-luminosity" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIcN0-LTxGDaM-NAEgxeX-UX9MX7Ct2FslidLS0uys2XP55LsLXTtkWlomIa8BIIEclhphmqzOSDIW3gQxbSBCdAstDHeKUjJrkOFso3Q3O-i_fsuxDRDb_mQOm6ETGXnWyfbW7UrHAUxTFZbBcXSaewXq7P_udjRnBpQfIJlHOjTIeBMdB7M4CvicTT3J1jRRvM5xnP5FNePGk9JplZSoXm2Dvr59dH8QzCQc2x6B3Th-S4AVCGmbE6BwH3ugWhG5UoWwxWrjgide"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
-          </motion.div>
+
+            {/* Right — service pill grid */}
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3, duration: 0.7 }} className="grid grid-cols-2 gap-3">
+              {[
+                { label: "Brand Strategy",        color: "border-primary/40 text-primary" },
+                { label: "Campaign Mgmt",         color: "border-secondary/40 text-secondary" },
+                { label: "Design & Creative",     color: "border-tertiary/40 text-tertiary" },
+                { label: "Digital & Web",         color: "border-primary/40 text-primary" },
+                { label: "Events & Activations",  color: "border-secondary/40 text-secondary" },
+                { label: "Photography & Video",   color: "border-tertiary/40 text-tertiary" },
+                { label: "Internal Comms",        color: "border-primary/40 text-primary" },
+                { label: "PR & Media Relations",  color: "border-secondary/40 text-secondary" },
+                { label: "Social Media",          color: "border-tertiary/40 text-tertiary" },
+                { label: "Influencer Mgmt",       color: "border-primary/40 text-primary" },
+              ].map(({ label, color }, i) => (
+                <motion.div key={label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 + i * 0.05 }} className={`border ${color} px-4 py-3 text-xs font-bold uppercase tracking-widest`}>
+                  {label}
+                </motion.div>
+              ))}
+            </motion.div>
+
+          </div>
         </section>
 
-        {/* Section 1: Core Pillars (Bento-style Minimalist) */}
-        <section className="px-8 py-24 bg-surface-container-lowest">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-4 border border-outline-variant/10">
-              {/* Activations */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-surface p-12 hover:bg-surface-container-high transition-all duration-300 group"
-              >
-                <div className="mb-12">
-                  <Rocket className="text-primary w-10 h-10" />
-                </div>
-                <h3 className="text-2xl font-bold mb-6 tracking-tight text-primary uppercase">Activations</h3>
-                <ul className="space-y-4 text-on-surface-variant font-medium text-sm">
-                  <li className="flex items-start gap-3">
-                    <span className="text-secondary mt-1">/</span>
-                    Brand immersive experiences designed for conversion.
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-secondary mt-1">/</span>
-                    Strategic consumer touchpoints in high-traffic digital landscapes.
-                  </li>
-                </ul>
-              </motion.div>
-              {/* Events */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="bg-surface p-12 hover:bg-surface-container-high transition-all duration-300 group border-l border-outline-variant/10 md:border-l-0 md:border-x border-outline-variant/10"
-              >
-                <div className="mb-12">
-                  <Calendar className="text-primary w-10 h-10" />
-                </div>
-                <h3 className="text-2xl font-bold mb-6 tracking-tight text-primary uppercase">Events</h3>
-                <ul className="space-y-4 text-on-surface-variant font-medium text-sm">
-                  <li className="flex items-start gap-3">
-                    <span className="text-secondary mt-1">/</span>
-                    High-precision corporate summits and technical showcases.
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-secondary mt-1">/</span>
-                    End-to-end logistical management with zero-latency execution.
-                  </li>
-                </ul>
-              </motion.div>
-              {/* Influencer Management */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="bg-surface p-12 hover:bg-surface-container-high transition-all duration-300 group"
-              >
-                <div className="mb-12">
-                  <Users className="text-primary w-10 h-10" />
-                </div>
-                <h3 className="text-2xl font-bold mb-6 tracking-tight text-primary uppercase">Influencer Management</h3>
-                <ul className="space-y-4 text-on-surface-variant font-medium text-sm">
-                  <li className="flex items-start gap-3">
-                    <span className="text-secondary mt-1">/</span>
-                    Data-driven selection of authority voices in your niche.
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-secondary mt-1">/</span>
-                    Performance-tracked campaign reporting and ROI analysis.
-                  </li>
-                </ul>
-              </motion.div>
-              {/* Photography & Videography */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="bg-surface p-12 hover:bg-surface-container-high transition-all duration-300 group border-l border-outline-variant/10 lg:border-l"
-              >
-                <div className="mb-12">
-                  <Camera className="text-primary w-10 h-10" />
-                </div>
-                <h3 className="text-2xl font-bold mb-6 tracking-tight text-primary uppercase">Photography & Videography</h3>
-                <ul className="space-y-4 text-on-surface-variant font-medium text-sm">
-                  <li className="flex items-start gap-3">
-                    <span className="text-secondary mt-1">/</span>
-                    High-end corporate photography
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-secondary mt-1">/</span>
-                    Premium brand videography
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-secondary mt-1">/</span>
-                    Event coverage and documentation
-                  </li>
-                </ul>
-              </motion.div>
+        {/* ── Services Bento Grid ── */}
+        <section className="py-24 px-8 md:px-16 lg:px-24 bg-surface">
+          <div className="max-w-screen-2xl mx-auto">
+            <div className="mb-16">
+              <p className="text-[10px] uppercase tracking-[0.35em] text-on-surface-variant font-bold mb-3">What We Do</p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">Our Services</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
+              {services.map(({ icon: Icon, title, body, tags, bg, iconColor, tagColor, col }, i) => (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.06 }}
+                  className={`${col} ${bg} p-8 flex flex-col justify-between group hover:brightness-110 transition-all duration-300 border border-white/5`}
+                >
+                  <div>
+                    <Icon className={`${iconColor} w-8 h-8 mb-6`} />
+                    <h3 className="text-lg font-black tracking-tight uppercase mb-3">{title}</h3>
+                    <p className="text-on-surface-variant text-sm leading-relaxed mb-6">{body}</p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {tags.map((tag) => (
+                      <span key={tag} className={`${tagColor} text-[10px] uppercase tracking-widest font-bold px-2 py-1`}>{tag}</span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Section 2: Ready to Launch? (CTA + Form) */}
-        <section className="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] bg-surface border-t border-outline-variant/15">
-          <div className="p-12 md:p-24 bg-surface-container-low flex flex-col justify-center">
-            <h2 className="text-5xl font-black tracking-tighter mb-6 uppercase">Ready to <br/><span className="text-tertiary">Launch?</span></h2>
-            <p className="text-on-surface-variant mb-12 max-w-sm font-medium">
-              Connect with our technical architects to define your next production phase. Precise strategies for global impact.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-primary text-on-primary px-10 py-4 font-bold tracking-tight hover:brightness-110 transition-all uppercase text-xs rounded-none">
-                Consult Now
-              </button>
-              <button className="border border-outline-variant/30 px-10 py-4 font-bold tracking-tight hover:bg-surface-container-highest transition-all uppercase text-xs rounded-none">
-                View Portfolio
-              </button>
+        {/* ── Our Approach ── */}
+        <section className="py-24 px-8 md:px-16 lg:px-24 bg-surface-container-lowest border-y border-outline-variant/10">
+          <div className="max-w-screen-2xl mx-auto">
+            <div className="mb-16">
+              <p className="text-[10px] uppercase tracking-[0.35em] text-on-surface-variant font-bold mb-3">How We Work</p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">Our Approach</h2>
             </div>
-          </div>
-          <div className="p-12 md:p-24 bg-surface-container-lowest border-l border-outline-variant/15">
-            <div className="max-w-md mx-auto">
-              <h4 className="text-xs font-black uppercase tracking-[0.3em] text-secondary mb-12">Begin Consultation</h4>
-              <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-                <div className="group border-b border-outline-variant/30 focus-within:border-primary transition-all">
-                  <label className="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary font-bold">Entity Name</label>
-                  <input className="w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface placeholder-outline-variant/50 outline-none" placeholder="Organization / Brand" type="text"/>
-                </div>
-                <div className="group border-b border-outline-variant/30 focus-within:border-primary transition-all">
-                  <label className="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary font-bold">Objective</label>
-                  <input className="w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface placeholder-outline-variant/50 outline-none" placeholder="Product Launch / Event / Activation" type="text"/>
-                </div>
-                <div className="group border-b border-outline-variant/30 focus-within:border-primary transition-all">
-                  <label className="block text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary font-bold">Contact Signature</label>
-                  <input className="w-full bg-transparent border-none p-0 focus:ring-0 text-on-surface placeholder-outline-variant/50 outline-none" placeholder="architect@company.com" type="email"/>
-                </div>
-                <div className="pt-4">
-                  <button className="w-full bg-surface-container-high border border-outline-variant/20 py-4 text-xs font-black uppercase tracking-widest hover:bg-primary hover:text-on-primary transition-all rounded-none" type="submit">
-                    Initialize Request
-                  </button>
-                </div>
-              </form>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-1">
+              {process.map(({ step, title, body }, i) => (
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="relative p-8 bg-surface-container-high border border-outline-variant/10 group hover:bg-surface-container-highest transition-colors"
+                >
+                  <div className="text-5xl font-black text-primary/15 mb-6 leading-none">{step}</div>
+                  <h3 className="text-base font-black uppercase tracking-tight mb-3 text-on-surface">{title}</h3>
+                  <p className="text-on-surface-variant text-sm leading-relaxed">{body}</p>
+                  {i < process.length - 1 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-3 z-10 text-outline-variant">
+                      <ArrowRight className="w-5 h-5" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
+
+        {/* ── Why Relativ Connect ── */}
+        <section className="py-24 px-8 md:px-16 lg:px-24 bg-surface">
+          <div className="max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <p className="text-[10px] uppercase tracking-[0.35em] text-secondary font-bold mb-4">Why Us</p>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-8 leading-tight">
+                One Partner.<br /><span className="text-primary">Every Channel.</span>
+              </h2>
+              <p className="text-on-surface-variant text-lg leading-relaxed mb-6">
+                Most agencies do one or two things well. We handle the full picture. Strategy, creative, digital, production, and communications all sit under the same roof, which means your brand stays consistent and your team stops chasing five different suppliers.
+              </p>
+              <p className="text-on-surface-variant leading-relaxed mb-10">
+                We also have direct access to Relativ Media's 900+ OOH assets, making us one of the few agencies that can connect your digital strategy to large-format physical media at a continental scale.
+              </p>
+              <button onClick={goContact} className="inline-flex items-center gap-4 px-10 py-5 bg-primary text-on-primary font-bold uppercase tracking-widest text-sm hover:brightness-110 transition-all group rounded-none">
+                Get in Touch
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+              </button>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="grid grid-cols-1 gap-3">
+              {[
+                { icon: TrendingUp,    color: "text-secondary", bg: "bg-secondary/10",  label: "Measurable ROI on every engagement" },
+                { icon: CheckCircle,   color: "text-primary",   bg: "bg-primary/10",    label: "Integrated strategy across all channels" },
+                { icon: Palette,       color: "text-tertiary",  bg: "bg-tertiary/10",   label: "In-house creative production, no outsourcing" },
+                { icon: Globe,         color: "text-secondary", bg: "bg-secondary/10",  label: "Digital-first, pan-African in reach" },
+                { icon: MessageSquare, color: "text-primary",   bg: "bg-primary/10",    label: "Internal and external comms under one roof" },
+                { icon: Share2,        color: "text-tertiary",  bg: "bg-tertiary/10",   label: "Omni-channel execution backed by Relativ Media OOH" },
+              ].map(({ icon: Icon, color, bg, label }, i) => (
+                <motion.div key={label} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="flex items-center gap-5 p-5 bg-surface-container-low border border-outline-variant/10 hover:border-outline-variant/30 transition-colors">
+                  <div className={`${bg} p-3 flex-shrink-0`}>
+                    <Icon className={`${color} w-5 h-5`} />
+                  </div>
+                  <span className="font-medium text-sm">{label}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+          </div>
+        </section>
+
       </main>
 
       {/* Footer */}
       <footer className="bg-black border-t border-slate-800/30">
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
-            <img 
-              alt="Relativ Connect logo" 
-              className="h-8 w-auto mb-4 opacity-80"
-              src="/logo.png"
-            />
+            <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
             <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
@@ -240,6 +359,7 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
           </div>
         </div>
       </footer>
+
     </div>
   );
 };

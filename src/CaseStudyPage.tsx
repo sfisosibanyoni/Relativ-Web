@@ -1,15 +1,147 @@
 import { motion, useInView, useMotionValue, useTransform, animate, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import { 
-  ArrowRight, 
-  CreditCard, 
-  Users, 
-  Globe, 
-  Radio, 
-  BookOpen, 
+import * as React from "react";
+import {
+  ArrowRight,
+  CreditCard,
+  Users,
+  Globe,
+  Radio,
+  BookOpen,
   Layout,
-  Instagram
+  Instagram,
+  X,
+  ChevronLeft,
+  ChevronRight,
+  ZoomIn,
 } from "lucide-react";
+
+// ── Gallery images with tile layout spans ──────────────────────────────────
+const galleryImages = [
+  { src: "/gallery/iatf-01.jpg", alt: "IATF 2025 — Conference session",      col: "md:col-span-2", row: "md:row-span-2" },
+  { src: "/gallery/iatf-02.jpg", alt: "IATF 2025 — Exhibition floor",        col: "md:col-span-1", row: "md:row-span-1" },
+  { src: "/gallery/iatf-03.jpg", alt: "IATF 2025 — Panel discussion",        col: "md:col-span-1", row: "md:row-span-1" },
+  { src: "/gallery/iatf-04.jpg", alt: "IATF 2025 — Trade delegates",         col: "md:col-span-1", row: "md:row-span-2" },
+  { src: "/gallery/iatf-05.jpg", alt: "IATF 2025 — Opening ceremony",        col: "md:col-span-2", row: "md:row-span-1" },
+  { src: "/gallery/iatf-06.jpg", alt: "IATF 2025 — Networking event",        col: "md:col-span-1", row: "md:row-span-1" },
+  { src: "/gallery/iatf-07.jpg", alt: "IATF 2025 — Brand activation",        col: "md:col-span-1", row: "md:row-span-1" },
+  { src: "/gallery/iatf-08.jpg", alt: "IATF 2025 — Keynote address",         col: "md:col-span-2", row: "md:row-span-1" },
+  { src: "/gallery/iatf-09.jpg", alt: "IATF 2025 — Exhibit hall",            col: "md:col-span-1", row: "md:row-span-2" },
+  { src: "/gallery/iatf-10.jpg", alt: "IATF 2025 — AfCFTA Marketplace",      col: "md:col-span-1", row: "md:row-span-1" },
+  { src: "/gallery/iatf-11.jpg", alt: "IATF 2025 — Stage presentation",      col: "md:col-span-1", row: "md:row-span-1" },
+  { src: "/gallery/iatf-12.jpg", alt: "IATF 2025 — Media coverage",          col: "md:col-span-2", row: "md:row-span-1" },
+  { src: "/gallery/iatf-13.jpg", alt: "IATF 2025 — Business summit",         col: "md:col-span-1", row: "md:row-span-1" },
+  { src: "/gallery/iatf-14.jpg", alt: "IATF 2025 — Award ceremony",          col: "md:col-span-1", row: "md:row-span-1" },
+  { src: "/gallery/iatf-15.jpg", alt: "IATF 2025 — Trade facilitation",      col: "md:col-span-1", row: "md:row-span-1" },
+  { src: "/gallery/iatf-16.jpg", alt: "IATF 2025 — Closing plenary",         col: "md:col-span-1", row: "md:row-span-1" },
+];
+
+const GallerySection = () => {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const prev = () => setLightbox((i) => (i! - 1 + galleryImages.length) % galleryImages.length);
+  const next = () => setLightbox((i) => (i! + 1) % galleryImages.length);
+
+  const handleKey = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") prev();
+    if (e.key === "ArrowRight") next();
+    if (e.key === "Escape") setLightbox(null);
+  };
+
+  return (
+    <section className="py-24">
+      {/* Heading */}
+      <div className="px-8 md:px-16 lg:px-24 mb-12">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="w-8 h-[2px] bg-primary"></span>
+          <span className="text-primary text-[10px] tracking-[0.35em] uppercase font-bold">Event Photography</span>
+        </div>
+        <h2 className="text-4xl font-black tracking-tighter uppercase">Gallery</h2>
+      </div>
+
+      {/* Tiled grid */}
+      <div className="px-8 md:px-16 lg:px-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] gap-2">
+          {galleryImages.map((img, i) => (
+            <motion.div
+              key={img.src}
+              initial={{ opacity: 0, scale: 0.97 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.04 }}
+              onClick={() => setLightbox(i)}
+              className={`${img.col} ${img.row} relative overflow-hidden cursor-pointer group bg-surface-container-high`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 grayscale-[20%] group-hover:grayscale-0"
+              />
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-8 h-8 drop-shadow-lg" />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Lightbox */}
+      {lightbox !== null && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+          onClick={() => setLightbox(null)}
+          onKeyDown={handleKey}
+          tabIndex={0}
+        >
+          {/* Close */}
+          <button
+            className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10"
+            onClick={() => setLightbox(null)}
+          >
+            <X className="w-8 h-8" />
+          </button>
+
+          {/* Prev */}
+          <button
+            className="absolute left-4 md:left-8 text-white/60 hover:text-white transition-colors z-10 p-2"
+            onClick={(e) => { e.stopPropagation(); prev(); }}
+          >
+            <ChevronLeft className="w-10 h-10" />
+          </button>
+
+          {/* Image */}
+          <motion.img
+            key={lightbox}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.2 }}
+            src={galleryImages[lightbox].src}
+            alt={galleryImages[lightbox].alt}
+            className="max-h-[85vh] max-w-[85vw] object-contain shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* Next */}
+          <button
+            className="absolute right-4 md:right-8 text-white/60 hover:text-white transition-colors z-10 p-2"
+            onClick={(e) => { e.stopPropagation(); next(); }}
+          >
+            <ChevronRight className="w-10 h-10" />
+          </button>
+
+          {/* Counter */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/50 text-xs uppercase tracking-widest font-bold">
+            {lightbox + 1} / {galleryImages.length}
+          </div>
+        </motion.div>
+      )}
+    </section>
+  );
+};
 
 interface CaseStudyPageProps {
   onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void;
@@ -282,28 +414,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
         </section>
 
         {/* Gallery Section */}
-        <section className="py-24">
-          <div className="px-8 mb-12">
-            <h2 className="text-4xl font-bold tracking-tighter uppercase">Gallery</h2>
-            <div className="w-16 h-1 bg-primary mt-4"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-8">
-            <div className="bg-surface-container-high overflow-hidden border border-outline-variant/10">
-              <img 
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-                src="/api/attachments/12345"
-                alt="IATF 2025 Event Highlights"
-              />
-            </div>
-            <div className="bg-surface-container-high overflow-hidden border border-outline-variant/10">
-              <img 
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
-                src="/api/attachments/67890"
-                alt="IATF 2025 Marketing Collateral"
-              />
-            </div>
-          </div>
-        </section>
+        <GallerySection />
 
         {/* Contact CTA */}
         <section className="px-8 py-32 md:px-16 lg:px-24 bg-surface-container-lowest relative overflow-hidden">
@@ -314,7 +425,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
               We combine strategy and creative design to help you reach more customers and scale your brand. Let's talk about how we can help.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-primary text-on-primary font-bold px-12 py-5 text-lg hover:bg-white hover:text-on-primary transition-colors rounded-none">START A PROJECT</button>
+              <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="bg-primary text-on-primary font-bold px-12 py-5 text-lg hover:brightness-110 transition-all rounded-none">GET IN TOUCH</button>
             </div>
           </div>
         </section>

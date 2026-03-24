@@ -145,7 +145,7 @@ const Capabilities = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study'
         <CapabilityCard
           icon={Share2}
           title="Marketing & Comms"
-          description="Full-scale campaigns and event production to help your brand connect with the right audience."
+          description="360° marketing and communications — brand strategy, PR, social media, events, influencer management, design, and everything in between."
           colorClass="primary"
           onClick={() => onNavigate('marketing-comms')}
         />
@@ -228,7 +228,7 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
             <img
               src="/iatf-casestudy.jpg"
               alt="IATF 2025 Case Study"
-              className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100 grayscale group-hover:grayscale-0"
+              className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100"
             />
             <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-700"></div>
           </motion.div>
