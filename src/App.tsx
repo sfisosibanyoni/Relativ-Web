@@ -413,8 +413,50 @@ const Footer = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'st
   </footer>
 );
 
+type Page = 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service';
+
+const pathToPage: Record<string, Page> = {
+  '/': 'home',
+  '/case-study': 'case-study',
+  '/strategy': 'strategy',
+  '/design-creative': 'design-creative',
+  '/ai-solutions': 'ai-solutions',
+  '/marketing-comms': 'marketing-comms',
+  '/privacy-policy': 'privacy-policy',
+  '/terms-of-service': 'terms-of-service',
+};
+
+const pageToPath: Record<Page, string> = {
+  'home': '/',
+  'case-study': '/case-study',
+  'strategy': '/strategy',
+  'design-creative': '/design-creative',
+  'ai-solutions': '/ai-solutions',
+  'marketing-comms': '/marketing-comms',
+  'privacy-policy': '/privacy-policy',
+  'terms-of-service': '/terms-of-service',
+};
+
+function getPageFromPath(): Page {
+  return pathToPage[window.location.pathname] ?? 'home';
+}
+
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service'>('home');
+  const [currentPage, setCurrentPage] = useState<Page>(getPageFromPath);
+
+  const navigate = (page: Page) => {
+    window.history.pushState({ page }, '', pageToPath[page]);
+    setCurrentPage(page);
+  };
+
+  useEffect(() => {
+    const onPop = (e: PopStateEvent) => {
+      const page: Page = (e.state?.page as Page) ?? getPageFromPath();
+      setCurrentPage(page);
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
 
   useEffect(() => {
     if (currentPage === 'home') {
@@ -431,44 +473,44 @@ export default function App() {
   }, [currentPage]);
 
   if (currentPage === 'case-study') {
-    return <CaseStudyPage onNavigate={setCurrentPage} />;
+    return <CaseStudyPage onNavigate={navigate} />;
   }
 
   if (currentPage === 'strategy') {
-    return <StrategyPage onNavigate={setCurrentPage} />;
+    return <StrategyPage onNavigate={navigate} />;
   }
 
   if (currentPage === 'design-creative') {
-    return <DesignCreativePage onNavigate={setCurrentPage} />;
+    return <DesignCreativePage onNavigate={navigate} />;
   }
 
   if (currentPage === 'ai-solutions') {
-    return <AISolutionsPage onNavigate={setCurrentPage} />;
+    return <AISolutionsPage onNavigate={navigate} />;
   }
 
   if (currentPage === 'marketing-comms') {
-    return <MarketingCommsPage onNavigate={setCurrentPage} />;
+    return <MarketingCommsPage onNavigate={navigate} />;
   }
 
   if (currentPage === 'privacy-policy') {
-    return <PrivacyPolicyPage onNavigate={setCurrentPage} />;
+    return <PrivacyPolicyPage onNavigate={navigate} />;
   }
 
   if (currentPage === 'terms-of-service') {
-    return <TermsOfServicePage onNavigate={setCurrentPage} />;
+    return <TermsOfServicePage onNavigate={navigate} />;
   }
 
   return (
     <div className="min-h-screen">
-      <Navbar onNavigate={setCurrentPage} />
+      <Navbar onNavigate={navigate} />
       <main className="pt-20">
         <Hero />
-        <Capabilities onNavigate={setCurrentPage} />
-        <CaseStudySection onNavigate={setCurrentPage} />
+        <Capabilities onNavigate={navigate} />
+        <CaseStudySection onNavigate={navigate} />
         <MotherAgencyBanner />
         <Contact />
       </main>
-      <Footer onNavigate={setCurrentPage} />
+      <Footer onNavigate={navigate} />
     </div>
   );
 }
