@@ -1,4 +1,5 @@
 import * as React from "react";
+import Navbar from "./Navbar";
 
 interface LegalPageProps {
   onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void;
@@ -21,20 +22,7 @@ export default function PrivacyPolicyPage({ onNavigate }: LegalPageProps) {
 
   return (
     <div className="bg-surface text-on-surface font-sans min-h-screen">
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
-        <div className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
-          <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
-            <img src="/logo.png" alt="Relativ Connect" className="h-10 w-auto" />
-          </div>
-          <button
-            onClick={() => onNavigate('home')}
-            className="text-slate-400 hover:text-slate-100 transition-colors text-sm font-medium tracking-tight"
-          >
-            ← Back to Home
-          </button>
-        </div>
-      </nav>
+      <Navbar onNavigate={onNavigate} />
 
       <main className="pt-32 pb-24 px-8">
         <div className="max-w-3xl mx-auto">

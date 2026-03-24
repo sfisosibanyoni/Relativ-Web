@@ -17,32 +17,7 @@ import AISolutionsPage from "./AISolutionsPage";
 import MarketingCommsPage from "./MarketingCommsPage";
 import PrivacyPolicyPage from "./PrivacyPolicyPage";
 import TermsOfServicePage from "./TermsOfServicePage";
-
-const Navbar = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'strategy' | 'design-creative' | 'ai-solutions' | 'marketing-comms' | 'privacy-policy' | 'terms-of-service') => void }) => (
-  <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
-    <div className="flex justify-between items-center px-8 h-16 w-full max-w-screen-2xl mx-auto">
-      <div className="flex items-center cursor-pointer" onClick={() => onNavigate('home')}>
-        <img src="/logo.png" alt="Relativ Connect" className="h-10 w-auto" />
-      </div>
-      <div className="hidden md:flex items-center gap-8 font-medium tracking-tight">
-        <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('capabilities')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-slate-100 transition-colors">Capabilities</button>
-        <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
-        <button onClick={() => { onNavigate('home'); setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
-      </div>
-      <button 
-        onClick={() => {
-          onNavigate('home');
-          setTimeout(() => {
-            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        }} 
-        className="hidden md:inline-block bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2.5 font-bold tracking-tight active:scale-95 transition-transform rounded-none"
-      >
-        Get in Touch
-      </button>
-    </div>
-  </nav>
-);
+import Navbar from "./Navbar";
 
 const SPOT = 800;
 
