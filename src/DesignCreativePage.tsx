@@ -67,13 +67,13 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
                 <span className="text-secondary text-[10px] tracking-[0.35em] uppercase font-bold">Engineered Placement</span>
               </div>
 
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none uppercase">
+              <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] uppercase">
                 Precision<br />
                 <span className="text-primary">Media</span><br />
                 Architecture.
               </h1>
 
-              <p className="text-xl md:text-2xl text-on-surface-variant max-w-2xl font-light leading-relaxed">
+              <p className="text-xl leading-relaxed text-on-surface-variant max-w-2xl">
                 Strategic media placement across traditional and digital landscapes, powered by architectural precision and real-time intelligence.
               </p>
 
@@ -107,7 +107,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
                   <Tv className="text-primary w-9 h-9" />
                   <span className="text-[10px] uppercase tracking-widest text-outline">01 / Pillars</span>
                 </div>
-                <h3 className="text-4xl font-black tracking-tighter uppercase mb-4">Traditional Media</h3>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tighter uppercase mb-4">Traditional Media</h3>
                 <p className="text-on-surface-variant text-lg leading-relaxed max-w-md">
                   High-impact placement in OOH, Radio, and TV. We command attention where it matters most, leveraging physical presence to anchor brand identity.
                 </p>
@@ -129,7 +129,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
             >
               <div>
                 <Globe className="text-on-primary w-9 h-9 mb-10" />
-                <h3 className="text-3xl font-black tracking-tighter uppercase mb-4 text-on-primary">Digital &amp; Social</h3>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tighter uppercase mb-4 text-on-primary">Digital &amp; Social</h3>
                 <p className="text-on-primary/80 font-medium leading-relaxed">
                   Data-driven campaigns across Meta, Google, and emerging platforms with surgical targeting.
                 </p>
@@ -149,7 +149,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
             >
               <div>
                 <Cpu className="text-secondary w-9 h-9 mb-10" />
-                <h3 className="text-2xl font-black tracking-tighter uppercase mb-4">Programmatic Buying</h3>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tighter uppercase mb-4">Programmatic Buying</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
                   AI-optimised real-time bidding for maximum efficiency. Every cent is allocated through algorithmic performance validation.
                 </p>
@@ -172,7 +172,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
             >
               <div className="flex-1">
                 <Brain className="text-tertiary w-9 h-9 mb-10" />
-                <h3 className="text-4xl font-black tracking-tighter uppercase mb-4">Media Intelligence</h3>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tighter uppercase mb-4">Media Intelligence</h3>
                 <p className="text-on-surface-variant text-lg leading-relaxed">
                   Using AI to predict trends and optimise ROI. Our intelligence layer sits above every placement, ensuring adaptive strategy in shifting markets.
                 </p>
@@ -202,13 +202,13 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
                 <span className="w-6 h-[2px] bg-primary"></span>
                 <span className="text-primary text-[10px] tracking-[0.35em] uppercase font-bold">The Bridge</span>
               </div>
-              <h2 className="text-5xl font-black tracking-tighter uppercase leading-tight mb-8">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase leading-tight mb-8">
                 Relativ Media<br />Synergy
               </h2>
               <p className="text-on-surface-variant text-xl leading-relaxed mb-4">
                 Relativ Connect operates as the digital frontier for our mother agency, <span className="text-on-surface font-bold">Relativ Media</span>.
               </p>
-              <p className="text-on-surface-variant text-lg leading-relaxed mb-10">
+              <p className="text-base leading-relaxed text-on-surface-variant mb-10">
                 While Relativ Media dominates the physical world with large-format digital assets and premier OOH locations, Relativ Connect bridges the gap — unifying physical visibility with digital strategy to create a seamless omni-channel ecosystem for the modern brand.
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -248,7 +248,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
 
                 <div>
-                  <h2 className="text-5xl font-black tracking-tighter uppercase mb-6 leading-none">
+                  <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-6 leading-none">
                     Initiate<br /><span className="text-secondary">Strategy.</span>
                   </h2>
                   <p className="text-on-surface-variant mb-12 leading-relaxed">
@@ -311,11 +311,11 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
-            <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect.</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
-            <button onClick={() => onNavigate('privacy-policy')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
-            <button onClick={() => onNavigate('terms-of-service')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
+            <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
+            <button onClick={() => onNavigate('terms-of-service')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
           </div>
         </div>
       </footer>

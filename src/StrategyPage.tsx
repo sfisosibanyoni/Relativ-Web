@@ -52,10 +52,10 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
               className="z-10"
             >
               <span className="text-secondary font-bold text-xs uppercase tracking-widest mb-4 block">Service Excellence</span>
-              <h1 className="text-6xl md:text-7xl font-bold tracking-tighter text-on-surface mb-6 leading-[0.9] uppercase">
+              <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6 leading-[0.9] uppercase">
                 Strategic<br/><span className="text-primary">Architecture</span>
               </h1>
-              <p className="text-on-surface-variant text-xl max-w-md font-light leading-relaxed">
+              <p className="text-xl leading-relaxed text-on-surface-variant max-w-md">
                 We build the logic that helps your business scale. Precision-engineered roadmaps for technical dominance.
               </p>
             </motion.div>
@@ -89,7 +89,7 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
                 className="bg-surface p-10 border-l-2 border-primary group hover:bg-surface-container-high transition-all duration-300"
               >
                 <BarChart3 className="text-primary mb-6 w-10 h-10" />
-                <h3 className="text-xl font-bold text-on-surface mb-4 uppercase tracking-tight">Market Analysis</h3>
+                <h3 className="text-xl font-black text-on-surface mb-4 uppercase tracking-tight">Market Analysis</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
                   Deep-dive data synthesis to identify whitespace and competitive vectors. We don't just see trends; we predict structural shifts.
                 </p>
@@ -103,7 +103,7 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
                 className="bg-surface p-10 border-l-2 border-secondary group hover:bg-surface-container-high transition-all duration-300"
               >
                 <GitBranch className="text-secondary mb-6 w-10 h-10" />
-                <h3 className="text-xl font-bold text-on-surface mb-4 uppercase tracking-tight">Roadmap Development</h3>
+                <h3 className="text-xl font-black text-on-surface mb-4 uppercase tracking-tight">Roadmap Development</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
                   Sequence-based planning that aligns technical capabilities with commercial milestones. Scalable frameworks for long-term growth.
                 </p>
@@ -117,7 +117,7 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
                 className="bg-surface p-10 border-l-2 border-tertiary group hover:bg-surface-container-high transition-all duration-300"
               >
                 <Cpu className="text-tertiary mb-6 w-10 h-10" />
-                <h3 className="text-xl font-bold text-on-surface mb-4 uppercase tracking-tight">Growth Engineering</h3>
+                <h3 className="text-xl font-black text-on-surface mb-4 uppercase tracking-tight">Growth Engineering</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed">
                   Algorithmic optimization of business processes. We transform operational friction into a streamlined engine for expansion.
                 </p>
@@ -131,8 +131,8 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
           <div className="container mx-auto px-8">
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-16 items-start">
               <div className="md:w-1/2">
-                <h2 className="text-4xl font-bold tracking-tighter text-on-surface mb-6 uppercase">Ready to Lead?</h2>
-                <p className="text-on-surface-variant mb-8 text-lg">
+                <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-on-surface mb-6 uppercase">Ready to Lead?</h2>
+                <p className="text-xl leading-relaxed text-on-surface-variant mb-8">
                   Schedule a high-intensity session with our strategy architects to audit your current trajectory and define a new baseline for success.
                 </p>
                 <div className="flex items-center gap-4 text-secondary">
@@ -179,11 +179,11 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
               className="h-8 w-auto mb-4 opacity-80"
               src="/logo.png"
             />
-            <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect.</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
-            <button onClick={() => onNavigate('privacy-policy')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
-            <button onClick={() => onNavigate('terms-of-service')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
+            <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
+            <button onClick={() => onNavigate('terms-of-service')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
           </div>
         </div>
       </footer>

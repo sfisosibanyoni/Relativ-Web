@@ -107,7 +107,7 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
                 Creative at Scale.
               </h1>
 
-              <p className="text-xl md:text-2xl text-on-surface-variant max-w-2xl font-light leading-relaxed">
+              <p className="text-xl leading-relaxed text-on-surface-variant max-w-2xl">
                 A creative and strategy-led generative AI offering for brands, agencies, and communications teams.
               </p>
 
@@ -133,7 +133,7 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
                 <span className="w-8 h-[2px] bg-secondary"></span>
                 <span className="text-secondary text-[10px] tracking-[0.35em] uppercase font-bold">Core Capacities</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-black tracking-tighter uppercase">Bridging Visual Production &amp; AI Enablement</h2>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">Bridging Visual Production &amp; AI Enablement</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-outline-variant/10">
@@ -147,7 +147,7 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
                   className="group p-10 bg-surface-container-high hover:bg-surface-bright transition-colors border-l-2 border-transparent hover:border-secondary"
                 >
                   <Icon className="text-primary w-8 h-8 mb-6" />
-                  <h3 className="text-lg font-bold mb-3 tracking-tight uppercase">{title}</h3>
+                  <h3 className="text-lg font-black mb-3 tracking-tight uppercase">{title}</h3>
                   <p className="text-on-surface-variant text-sm leading-relaxed">{body}</p>
                 </motion.div>
               ))}
@@ -165,7 +165,7 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
                 Ready to Architect Your<br />
                 <span className="text-secondary">AI Content Strategy?</span>
               </h2>
-              <p className="text-on-surface-variant text-lg mb-10 max-w-md leading-relaxed">
+              <p className="text-xl leading-relaxed text-on-surface-variant mb-10 max-w-md">
                 Get in touch to schedule a demo of our custom brand-trained systems and explore how we can scale your production.
               </p>
               <button
@@ -214,11 +214,11 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
-            <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect.</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
-            <button onClick={() => onNavigate('privacy-policy')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
-            <button onClick={() => onNavigate('terms-of-service')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
+            <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
+            <button onClick={() => onNavigate('terms-of-service')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
           </div>
         </div>
       </footer>

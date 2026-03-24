@@ -289,7 +289,7 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
                   className="relative p-8 bg-surface-container-high border border-outline-variant/10 group hover:bg-surface-container-highest transition-colors"
                 >
                   <div className="text-5xl font-black text-primary/15 mb-6 leading-none">{step}</div>
-                  <h3 className="text-base font-black uppercase tracking-tight mb-3 text-on-surface">{title}</h3>
+                  <h3 className="text-lg font-black uppercase tracking-tight mb-3 text-on-surface">{title}</h3>
                   <p className="text-on-surface-variant text-sm leading-relaxed">{body}</p>
                   {i < process.length - 1 && (
                     <div className="hidden lg:block absolute top-1/2 -right-3 z-10 text-outline-variant">
@@ -311,10 +311,10 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
               <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase mb-8 leading-tight">
                 One Partner.<br /><span className="text-primary">Every Channel.</span>
               </h2>
-              <p className="text-on-surface-variant text-lg leading-relaxed mb-6">
+              <p className="text-xl leading-relaxed text-on-surface-variant mb-6">
                 Most agencies do one or two things well. We handle the full picture. Strategy, creative, digital, production, and communications all sit under the same roof, which means your brand stays consistent and your team stops chasing five different suppliers.
               </p>
-              <p className="text-on-surface-variant leading-relaxed mb-10">
+              <p className="text-base leading-relaxed text-on-surface-variant mb-10">
                 We also have direct access to Relativ Media's 900+ OOH assets, making us one of the few agencies that can connect your digital strategy to large-format physical media at a continental scale.
               </p>
               <button onClick={goContact} className="inline-flex items-center gap-4 px-10 py-5 bg-primary text-on-primary font-bold uppercase tracking-widest text-sm hover:brightness-110 transition-all group rounded-none">
@@ -351,11 +351,11 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
-            <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect.</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
-            <button onClick={() => onNavigate('privacy-policy')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
-            <button onClick={() => onNavigate('terms-of-service')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
+            <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
+            <button onClick={() => onNavigate('terms-of-service')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
           </div>
         </div>
       </footer>

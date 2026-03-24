@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { 
   ArrowRight, 
   Search, 
@@ -44,13 +44,28 @@ const Navbar = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'st
   </nav>
 );
 
+const SPOT = 800;
+
 const Hero = () => {
   const { scrollY } = useScroll();
   const yBg = useTransform(scrollY, [0, 800], [0, 200]);
 
+  const [mouse, setMouse] = useState({ x: -SPOT, y: -SPOT });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMouse({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  };
+
+  const handleMouseLeave = () => {
+    setMouse({ x: -SPOT, y: -SPOT });
+  };
+
   return (
-    <section 
+    <section
       className="relative min-h-[600px] lg:min-h-[700px] flex items-center px-8 py-16 lg:py-24 overflow-hidden"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <motion.div
         style={{ y: yBg }}
@@ -62,6 +77,19 @@ const Hero = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/60 z-10"></div>
       </motion.div>
+
+      <div
+        className="absolute pointer-events-none z-[15] rounded-full"
+        style={{
+          width: SPOT,
+          height: SPOT,
+          top: 0,
+          left: 0,
+          background: 'radial-gradient(circle, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.03) 40%, transparent 70%)',
+          transform: `translate(${mouse.x - SPOT / 2}px, ${mouse.y - SPOT / 2}px)`,
+          transition: 'transform 0.1s ease-out',
+        }}
+      />
       
       <motion.div 
         className="relative z-20 w-full max-w-screen-2xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
@@ -71,7 +99,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-[10px] uppercase tracking-[0.4em] text-secondary mb-4 block font-bold opacity-80"
+            className="text-[10px] uppercase tracking-[0.35em] text-secondary mb-4 block font-bold opacity-80"
           >
             Full-Service Marketing Agency
           </motion.span>
@@ -79,7 +107,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[0.85]"
+            className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9]"
           >
             CREATIVE <br/>
             STRATEGY. <br/>
@@ -94,10 +122,10 @@ const Hero = () => {
           className="max-w-xl"
         >
           <div className="space-y-6">
-            <p className="text-on-surface-variant text-lg md:text-xl leading-relaxed font-medium">
+            <p className="text-on-surface-variant text-xl leading-relaxed">
               We solve modern communication needs by combining strategic insight with generative AI, beautiful design, and high-end production.
             </p>
-            <p className="text-on-surface-variant/60 text-sm md:text-base leading-relaxed">
+            <p className="text-on-surface-variant/60 text-base leading-relaxed">
               A 360° approach backed by full production capacity and unique access to outdoor media through Relativ Media.
             </p>
           </div>
@@ -116,7 +144,7 @@ const CapabilityCard = ({ icon: Icon, title, description, colorClass, onClick }:
     <div className={`absolute inset-0 bg-${colorClass}/5 opacity-0 group-hover:opacity-100 transition-opacity blur-3xl -z-10`} />
     <div>
       <Icon className={`text-${colorClass} w-10 h-10 mb-8`} />
-      <h4 className="text-2xl font-bold mb-4 tracking-tight">{title}</h4>
+      <h4 className="text-xl font-black mb-4 tracking-tight uppercase">{title}</h4>
       <p className="text-on-surface-variant leading-relaxed text-sm">{description}</p>
     </div>
     <div className={`mt-8 flex items-center gap-2 text-${colorClass} font-bold uppercase text-[10px] tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0`}>
@@ -130,7 +158,7 @@ const Capabilities = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study'
     <div className="max-w-screen-2xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-baseline mb-16 gap-4">
         <div>
-          <p className="text-sm font-bold tracking-[0.2em] uppercase text-on-surface-variant mb-2">Our Capabilities</p>
+          <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-on-surface-variant mb-2">Our Capabilities</p>
           <h2 className="text-4xl font-black tracking-tighter uppercase">What We Do</h2>
         </div>
       </div>
@@ -192,21 +220,21 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
           <div>
             <div className="flex items-center gap-3 mb-6">
               <span className="w-12 h-[2px] bg-secondary"></span>
-              <span className="text-secondary font-bold tracking-widest text-sm uppercase">Global Impact</span>
+              <span className="text-secondary text-[10px] uppercase tracking-[0.35em] font-bold">Global Impact</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 uppercase">Case Study: IATF 2025</h2>
-            <h3 className="text-2xl md:text-3xl text-on-surface-variant font-medium mb-10">Pan-African Trade Promotion</h3>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-4 uppercase">Case Study: IATF 2025</h2>
+            <h3 className="text-xl text-on-surface-variant font-medium mb-10">Pan-African Trade Promotion</h3>
             <div className="grid grid-cols-3 gap-8 mb-12 max-w-xl">
               <div>
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-1">$48B</div>
+                <div className="text-4xl font-black text-primary mb-1">$48B</div>
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Trade deals facilitated</div>
               </div>
               <div className="border-l border-outline-variant/30 pl-8">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-1">4M+</div>
+                <div className="text-4xl font-black text-primary mb-1">4M+</div>
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Verified DOOH Impressions</div>
               </div>
               <div className="border-l border-outline-variant/30 pl-8">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-1">100K+</div>
+                <div className="text-4xl font-black text-primary mb-1">100K+</div>
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Visitors online and in-person</div>
               </div>
             </div>
@@ -294,7 +322,7 @@ const Contact = () => (
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-primary font-bold tracking-widest uppercase text-xs mb-4 block"
+            className="text-primary text-[10px] uppercase tracking-[0.35em] font-bold mb-4 block"
           >
             Get in touch
           </motion.span>
@@ -303,7 +331,7 @@ const Contact = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-6xl font-bold tracking-tighter mb-8 leading-tight"
+            className="text-5xl md:text-6xl font-black tracking-tighter mb-8 leading-[0.9]"
           >
             Let's work <br/>
             <span className="text-on-surface-variant/50 italic">together</span>.
@@ -313,7 +341,7 @@ const Contact = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-on-surface-variant text-lg leading-relaxed mb-10 max-w-md"
+            className="text-xl leading-relaxed text-on-surface-variant mb-10 max-w-md"
           >
             Have a project in mind or just want to learn more? We're here to help you grow your business and reach your goals.
           </motion.p>
@@ -403,11 +431,11 @@ const Footer = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'st
     <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
       <div className="mb-8 md:mb-0">
         <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
-        <p className="text-sm tracking-wide uppercase text-slate-500">© 2024 Relativ Connect.</p>
+        <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
       </div>
       <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
-        <button onClick={() => onNavigate('privacy-policy')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
-        <button onClick={() => onNavigate('terms-of-service')} className="text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
+        <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
+        <button onClick={() => onNavigate('terms-of-service')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Terms of Service</button>
       </div>
     </div>
   </footer>

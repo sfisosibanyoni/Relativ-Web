@@ -232,7 +232,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="text-lg text-on-surface-variant max-w-md leading-relaxed mb-12"
+                className="text-xl leading-relaxed text-on-surface-variant max-w-md mb-12"
               >
                 Architecting the largest intra-African trade exchange through strategic marketing precision and continental reach.
               </motion.p>
@@ -260,15 +260,15 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
               className="flex gap-12 mt-16 pt-8 border-t border-outline-variant/20"
             >
               <div>
-                <div className="text-3xl font-black text-primary">$48B</div>
+                <div className="text-4xl font-black text-primary">$48B</div>
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mt-1">Trade Facilitated</div>
               </div>
               <div>
-                <div className="text-3xl font-black text-primary">4M+</div>
+                <div className="text-4xl font-black text-primary">4M+</div>
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mt-1">DOOH Impressions</div>
               </div>
               <div>
-                <div className="text-3xl font-black text-primary">132</div>
+                <div className="text-4xl font-black text-primary">132</div>
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mt-1">Countries</div>
               </div>
             </motion.div>
@@ -304,15 +304,15 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
         <section className="px-8 py-24 md:px-16 lg:px-24 bg-surface-container-lowest">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
             <div className="md:col-span-4">
-              <h2 className="text-xs uppercase tracking-widest text-secondary font-bold mb-8">Role Overview</h2>
+              <h2 className="text-[10px] uppercase tracking-[0.35em] text-secondary font-bold mb-8">Role Overview</h2>
               <div className="space-y-6">
                 <div className="p-6 bg-surface-container-low border-l-4 border-primary">
                   <p className="text-[10px] uppercase text-on-surface-variant mb-2 font-bold tracking-widest">Agency Name</p>
-                  <p className="text-xl font-bold">Relativ Connect</p>
+                  <p className="text-xl font-black">Relativ Connect</p>
                 </div>
                 <div className="p-6 bg-surface-container-low border-l-4 border-secondary">
                   <p className="text-[10px] uppercase text-on-surface-variant mb-2 font-bold tracking-widest">Our Mandate</p>
-                  <p className="text-xl font-bold">Lead Marketing Agency</p>
+                  <p className="text-xl font-black">Lead Marketing Agency</p>
                 </div>
               </div>
             </div>
@@ -328,7 +328,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
 
         {/* Key Results Bento Grid */}
         <section className="px-8 py-24 md:px-16 lg:px-24">
-          <h2 className="text-4xl font-bold mb-12 tracking-tight">Key Outcomes</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-12 tracking-tighter uppercase">Key Outcomes</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
             {/* Large Primary Stat */}
             <div className="md:col-span-2 md:row-span-2 bg-primary-container p-12 flex flex-col justify-between group overflow-hidden relative">
@@ -344,12 +344,12 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
                   <Counter value={48} prefix="$" suffix="B" />
                 </h3>
               </div>
-              <p className="relative z-10 text-2xl font-bold text-on-primary-container max-w-xs">Trade deals facilitated through integrated promotion strategy.</p>
+              <p className="relative z-10 text-xl font-black text-on-primary-container max-w-xs uppercase tracking-tight">Trade deals facilitated through integrated promotion strategy.</p>
             </div>
             {/* Impressions */}
             <div className="bg-surface-container-high p-8 flex flex-col justify-center">
               <p className="text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">DOOH Visibility</p>
-              <h3 className="text-4xl font-bold text-secondary">
+              <h3 className="text-4xl font-black text-secondary">
                 <Counter value={4} suffix="M+" />
               </h3>
               <p className="text-sm text-on-surface-variant mt-2">Verified Airport impressions globally.</p>
@@ -357,7 +357,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
             {/* Countries */}
             <div className="bg-surface-container-high p-8 flex flex-col justify-center">
               <p className="text-[10px] uppercase tracking-widest text-on-surface-variant mb-2 font-bold">Global Participation</p>
-              <h3 className="text-4xl font-bold text-on-background">
+              <h3 className="text-4xl font-black">
                 <Counter value={132} />
               </h3>
               <p className="text-sm text-on-surface-variant mt-2">Participating countries and territories.</p>
@@ -368,7 +368,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
                 <Counter value={112} suffix="K" />
               </div>
               <div>
-                <p className="text-xl font-bold">Total Attendance</p>
+                <p className="text-xl font-black uppercase tracking-tight">Total Attendance</p>
                 <p className="text-on-surface-variant">Stakeholders, exhibitors, and delegates engaged across physical and digital touchpoints.</p>
               </div>
             </div>
@@ -380,7 +380,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row gap-16 items-start">
               <div className="md:w-1/3 sticky top-32">
-                <h2 className="text-4xl font-bold tracking-tighter mb-6">Strategy & <br/><span className="text-secondary">Execution</span></h2>
+                <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 uppercase">Strategy & <br/><span className="text-secondary">Execution</span></h2>
                 <div className="w-16 h-1 bg-secondary mb-8"></div>
                 <p className="text-on-surface-variant leading-relaxed">
                   Our approach utilized a multi-layered media architecture, combining high-authority editorial with algorithmic digital precision.
@@ -390,21 +390,21 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
                 <div className="bg-surface-container-highest p-8 flex gap-6">
                   <Radio className="text-primary w-8 h-8 shrink-0" />
                   <div>
-                    <h4 className="text-xl font-bold mb-2">Global Broadcast Reach</h4>
+                    <h4 className="text-xl font-black mb-2 uppercase tracking-tight">Global Broadcast Reach</h4>
                     <p className="text-on-surface-variant">Domination of premium news channels including CNN Africa, BBC News, and Al Jazeera to establish continental authority.</p>
                   </div>
                 </div>
                 <div className="bg-surface-container-highest p-8 flex gap-6">
                   <BookOpen className="text-primary w-8 h-8 shrink-0" />
                   <div>
-                    <h4 className="text-xl font-bold mb-2">Trusted Editorial Authority</h4>
+                    <h4 className="text-xl font-black mb-2 uppercase tracking-tight">Trusted Editorial Authority</h4>
                     <p className="text-on-surface-variant">Strategic print and engagement partnerships with Forbes Afrique and The Guardian to capture the C-Suite and policy-makers.</p>
                   </div>
                 </div>
                 <div className="bg-surface-container-highest p-8 flex gap-6">
                   <Globe className="text-primary w-8 h-8 shrink-0" />
                   <div>
-                    <h4 className="text-xl font-bold mb-2">55-Nation Coordination</h4>
+                    <h4 className="text-xl font-black mb-2 uppercase tracking-tight">55-Nation Coordination</h4>
                     <p className="text-on-surface-variant">Executing a localized yet unified message across diverse linguistic and cultural markets within the African continent.</p>
                   </div>
                 </div>
@@ -420,7 +420,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
         <section className="px-8 py-32 md:px-16 lg:px-24 bg-surface-container-lowest relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 transform translate-x-32"></div>
           <div className="relative z-10 max-w-4xl">
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8">Ready to grow your business?</h2>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-8">Ready to grow your business?</h2>
             <p className="text-xl text-on-surface-variant mb-12 max-w-2xl">
               We combine strategy and creative design to help you reach more customers and scale your brand. Let's talk about how we can help.
             </p>
