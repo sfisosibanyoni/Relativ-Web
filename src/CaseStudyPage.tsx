@@ -365,7 +365,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
         <section className="px-8 py-24 md:px-16 lg:px-24 bg-surface-container-low">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row gap-16 items-start">
-              <div className="md:w-1/3 sticky top-32">
+              <div className="md:w-1/3 md:sticky md:top-32">
                 <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 uppercase">Strategy & <br/><span className="text-secondary">Execution</span></h2>
                 <div className="w-16 h-1 bg-secondary mb-8"></div>
                 <p className="text-on-surface-variant leading-relaxed">
