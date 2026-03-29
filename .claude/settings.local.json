@@ -5,7 +5,10 @@
       "Bash(cp \"C:/Users/Sfiso/Downloads/relativlogoupscale.png\" \"C:/Users/Sfiso/Desktop/Relativwebsite/Relativ-Web/public/logo.png\")",
       "Bash(grep -n \"robots\\\\|sitemap\" \"/c/Users/Sfiso/Desktop/Relativwebsite/Relativ-Web/public/\"*)",
       "Bash(grep -n \"alt=\" \"/c/Users/Sfiso/Desktop/Relativwebsite/Relativ-Web/src\"/*.tsx)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "Bash(npm run:*)",
+      "Bash(powershell -Command \":*)",
+      "Bash(winget upgrade:*)"
     ]
   }
 }

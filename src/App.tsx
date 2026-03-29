@@ -1,12 +1,16 @@
-import { motion, useScroll, useTransform } from "motion/react";
-import { 
-  ArrowRight, 
-  Search, 
-  Brain, 
-  Layout, 
-  Share2, 
-  Mail, 
-  Twitter 
+import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
+import {
+  ArrowRight,
+  Search,
+  Brain,
+  Layout,
+  Share2,
+  Mail,
+  Twitter,
+  ZoomIn,
+  X,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 import * as React from "react";
@@ -237,6 +241,256 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
           </motion.div>
         </div>
       </div>
+    </section>
+  );
+};
+
+const clientLogos = [
+  { name: "Client 01", src: "/clients/client-01.png" },
+  { name: "Client 02", src: "/clients/client-02.png" },
+  { name: "Client 03", src: "/clients/client-03.png" },
+  { name: "Client 04", src: "/clients/client-04.png" },
+  { name: "Client 05", src: "/clients/client-05.png" },
+  { name: "Client 06", src: "/clients/client-06.png" },
+];
+
+const ClientLogos = () => {
+  const repeated = [...clientLogos, ...clientLogos, ...clientLogos];
+  return (
+    <section className="py-20 bg-surface border-t border-outline-variant/10 overflow-hidden">
+      <div className="max-w-screen-2xl mx-auto px-8 mb-16">
+        <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-on-surface-variant mb-2">Our Work</p>
+        <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">Brands We've Worked With</h2>
+      </div>
+      <style>{`
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.333%); }
+        }
+        .marquee-track {
+          display: flex;
+          width: max-content;
+          animation: marquee 24s linear infinite;
+        }
+        .marquee-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
+      <div className="relative">
+        <div
+          className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+          style={{ background: "linear-gradient(to right, var(--color-surface), transparent)" }}
+        />
+        <div
+          className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
+          style={{ background: "linear-gradient(to left, var(--color-surface), transparent)" }}
+        />
+        <div className="marquee-track">
+          {repeated.map(({ name, src }, i) => (
+            <div
+              key={`${name}-${i}`}
+              className="flex-shrink-0 mx-4 group cursor-default"
+            >
+              <div className="w-44 h-16 flex items-center justify-center bg-surface-container-high border border-outline-variant/10 px-6 py-4 transition-all duration-300 group-hover:border-outline-variant/30">
+                <img
+                  src={src}
+                  alt={name}
+                  className="max-h-8 w-auto object-contain grayscale opacity-50 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.style.display = 'none';
+                    const placeholder = target.nextElementSibling as HTMLElement;
+                    if (placeholder) placeholder.style.display = 'flex';
+                  }}
+                />
+                <div className="hidden w-full h-full items-center justify-center">
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-outline/40">{name}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const workImages = [
+  // 2019-04-10
+  { src: '/work/work-03.jpg', alt: 'Relativ at Work' },
+  // 2021-07-22
+  { src: '/work/work-07.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-08.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-09.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-10.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-11.jpg', alt: 'Relativ at Work' },
+  // 2021-07-23
+  { src: '/work/work-05.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-06.jpg', alt: 'Relativ at Work' },
+  // 2022-09-28
+  { src: '/work/work-25.jpg', alt: 'Relativ at Work' },
+  // 2022-10-06
+  { src: '/work/work-26.jpg', alt: 'Relativ at Work' },
+  // 2022-11-15
+  { src: '/work/work-02.jpg', alt: 'Relativ at Work' },
+  // 2023-02-15
+  { src: '/work/work-13.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-14.jpg', alt: 'Relativ at Work' },
+  // 2023-02-16
+  { src: '/work/work-15.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-16.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-12.jpg', alt: 'Relativ at Work' },
+  // 2023-12-14
+  { src: '/work/work-21.jpg', alt: 'Relativ at Work' },
+  // 2024-06-27
+  { src: '/work/work-22.jpg', alt: 'Relativ at Work' },
+  // 2024-10-04
+  { src: '/work/work-17.jpg', alt: 'Relativ at Work' },
+  // 2025-08-14
+  { src: '/work/work-23.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-24.jpg', alt: 'Relativ at Work' },
+  // 2026-01-15
+  { src: '/work/work-04.jpg', alt: 'Relativ at Work' },
+  // no EXIF date
+  { src: '/work/work-18.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-19.jpg', alt: 'Relativ at Work' },
+  { src: '/work/work-20.jpg', alt: 'Relativ at Work' },
+];
+
+const WorkGallery = () => {
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollBy = (dir: -1 | 1) => {
+    if (!scrollRef.current) return;
+    const card = scrollRef.current.querySelector('[data-card]') as HTMLElement;
+    const step = card ? card.offsetWidth + 12 : 340;
+    scrollRef.current.scrollBy({ left: dir * step * 2, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightbox(null);
+      if (e.key === 'ArrowRight') setLightbox(i => i !== null ? (i + 1) % workImages.length : null);
+      if (e.key === 'ArrowLeft') setLightbox(i => i !== null ? (i - 1 + workImages.length) % workImages.length : null);
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [lightbox]);
+
+  return (
+    <section id="gallery" className="py-20 bg-surface border-t border-outline-variant/10">
+      {/* Header */}
+      <div className="px-8 max-w-screen-2xl mx-auto mb-10">
+        <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-on-surface-variant mb-2">Gallery</p>
+        <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">Relativ at Work</h2>
+      </div>
+
+      {/* Scrollable track — desktop */}
+      <div className="hidden md:flex items-center gap-4 px-8">
+        {/* Left arrow */}
+        <button
+          onClick={() => scrollBy(-1)}
+          className="flex-none w-12 h-12 flex items-center justify-center border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-colors bg-surface"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        {/* Track */}
+        <div
+          ref={scrollRef}
+          className="flex gap-3 overflow-x-scroll pb-1 scroll-smooth flex-1"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+        {workImages.map((img, i) => (
+          <div
+            key={i}
+            data-card
+            onClick={() => setLightbox(i)}
+            className="flex-none w-[320px] h-[420px] relative overflow-hidden cursor-pointer group border border-outline-variant/10 hover:border-outline-variant/30 transition-colors duration-300"
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <ZoomIn className="text-white w-8 h-8 opacity-80" />
+            </div>
+          </div>
+        ))}
+        </div>
+
+        {/* Right arrow */}
+        <button
+          onClick={() => scrollBy(1)}
+          className="flex-none w-12 h-12 flex items-center justify-center border border-outline-variant/30 text-on-surface-variant hover:border-primary hover:text-primary transition-colors bg-surface"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Mobile grid */}
+      <div className="grid grid-cols-2 gap-[3px] md:hidden px-0">
+        {workImages.map((img, i) => (
+          <div
+            key={i}
+            onClick={() => setLightbox(i)}
+            className="relative aspect-square overflow-hidden cursor-pointer"
+          >
+            <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black/20" />
+          </div>
+        ))}
+      </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightbox !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 bg-black/96 flex items-center justify-center"
+            onClick={() => setLightbox(null)}
+          >
+            <button
+              className="absolute top-6 right-6 text-white/60 hover:text-white transition-colors z-10"
+              onClick={() => setLightbox(null)}
+            >
+              <X className="w-8 h-8" />
+            </button>
+            <button
+              className="absolute left-4 md:left-8 text-white/60 hover:text-white transition-colors z-10"
+              onClick={(e) => { e.stopPropagation(); setLightbox((lightbox - 1 + workImages.length) % workImages.length); }}
+            >
+              <ChevronLeft className="w-10 h-10" />
+            </button>
+            <button
+              className="absolute right-4 md:right-8 text-white/60 hover:text-white transition-colors z-10"
+              onClick={(e) => { e.stopPropagation(); setLightbox((lightbox + 1) % workImages.length); }}
+            >
+              <ChevronRight className="w-10 h-10" />
+            </button>
+            <motion.img
+              key={lightbox}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.2 }}
+              src={workImages[lightbox].src}
+              alt={workImages[lightbox].alt}
+              className="max-h-[88vh] max-w-[88vw] object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-[10px] uppercase tracking-[0.35em] font-bold">
+              {lightbox + 1} / {workImages.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
@@ -510,6 +764,8 @@ export default function App() {
         <Hero />
         <Capabilities onNavigate={navigate} />
         <CaseStudySection onNavigate={navigate} />
+        <ClientLogos />
+        <WorkGallery />
         <MotherAgencyBanner />
         <Contact />
       </main>

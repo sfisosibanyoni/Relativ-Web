@@ -46,6 +46,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
           <div className="hidden md:flex items-center gap-8 font-medium tracking-tight">
             <button onClick={() => goSection('capabilities')} className="text-slate-400 hover:text-slate-100 transition-colors">Capabilities</button>
             <button onClick={() => goSection('work')} className="text-slate-400 hover:text-slate-100 transition-colors">Work</button>
+            <button onClick={() => goSection('gallery')} className="text-slate-400 hover:text-slate-100 transition-colors">Gallery</button>
             <button onClick={() => goSection('contact')} className="text-slate-400 hover:text-slate-100 transition-colors">Contact</button>
           </div>
 
@@ -112,6 +113,12 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
                   className="px-6 py-5 text-left text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5"
                 >
                   Work
+                </button>
+                <button
+                  onClick={() => goSection('gallery')}
+                  className="px-6 py-5 text-left text-xs font-bold uppercase tracking-widest text-slate-400 hover:text-white hover:bg-white/5 transition-colors border-b border-white/5"
+                >
+                  Gallery
                 </button>
                 <button
                   onClick={() => goSection('contact')}
