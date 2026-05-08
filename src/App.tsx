@@ -263,7 +263,7 @@ const allClientLogos = [
   { name: "Nando's", src: "/clients/nandos.png" },
   { name: "Castle Lite", src: "/clients/castle_lite.png" },
   { name: "Wimpy", src: "/clients/wimpy.png", large: true },
-  { name: "IATF", src: "/clients/iatf.png", fit: true },
+  { name: "IATF", src: "/clients/iatf.png", small: true },
   { name: "Simba", src: "/clients/simba.png", large: true },
   { name: "Cell C", src: "/clients/cell_c.png" },
   { name: "Edward Snell", src: "/clients/edward_snell.png", large: true },
@@ -283,10 +283,10 @@ const ClientLogos = () => (
         <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-white">Brands We've Worked With</h2>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-px bg-zinc-700">
-        {allClientLogos.map(({ name, src, large, fit }) => (
+        {allClientLogos.map(({ name, src, large, fit, small }: { name: string; src: string; large?: boolean; fit?: boolean; small?: boolean }) => (
           <div
             key={name}
-            className={`bg-white flex items-center justify-center group aspect-[3/2] ${fit ? "p-4" : large ? "p-0" : "p-6"}`}
+            className={`bg-white flex items-center justify-center group aspect-[3/2] ${small ? "p-8" : fit ? "p-4" : large ? "p-0" : "p-6"}`}
           >
             <img
               src={src}
