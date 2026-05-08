@@ -254,8 +254,39 @@ const clientLogos = [
   { name: "Client 06", src: "/clients/client-06.png" },
 ];
 
+const clientLogos2 = [
+  { name: "Client 07", src: "/clients/client-07.png" },
+  { name: "Client 08", src: "/clients/client-08.png" },
+  { name: "Client 09", src: "/clients/client-09.png" },
+  { name: "Client 10", src: "/clients/client-10.png" },
+  { name: "Client 11", src: "/clients/client-11.png" },
+  { name: "Client 12", src: "/clients/client-12.png" },
+];
+
+const LogoCard = ({ name, src, rowKey }: { name: string; src: string; rowKey: string }) => (
+  <div className="flex-shrink-0 mx-4 group cursor-default">
+    <div className="w-44 h-16 flex items-center justify-center bg-surface-container-high border border-outline-variant/10 px-6 py-4 transition-all duration-300 group-hover:border-outline-variant/30">
+      <img
+        src={src}
+        alt={name}
+        className="max-h-8 w-auto object-contain grayscale opacity-50 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+        onError={(e) => {
+          const target = e.currentTarget;
+          target.style.display = 'none';
+          const placeholder = target.nextElementSibling as HTMLElement;
+          if (placeholder) placeholder.style.display = 'flex';
+        }}
+      />
+      <div className="hidden w-full h-full items-center justify-center">
+        <span className="text-[10px] uppercase tracking-widest font-bold text-outline/40">{name}</span>
+      </div>
+    </div>
+  </div>
+);
+
 const ClientLogos = () => {
-  const repeated = [...clientLogos, ...clientLogos, ...clientLogos];
+  const repeated1 = [...clientLogos, ...clientLogos, ...clientLogos];
+  const repeated2 = [...clientLogos2, ...clientLogos2, ...clientLogos2];
   return (
     <section className="py-20 bg-surface border-t border-outline-variant/10 overflow-hidden">
       <div className="max-w-screen-2xl mx-auto px-8 mb-16">
@@ -267,16 +298,26 @@ const ClientLogos = () => {
           0% { transform: translateX(0); }
           100% { transform: translateX(-33.333%); }
         }
+        @keyframes marquee-reverse {
+          0% { transform: translateX(-33.333%); }
+          100% { transform: translateX(0); }
+        }
         .marquee-track {
           display: flex;
           width: max-content;
           animation: marquee 24s linear infinite;
         }
-        .marquee-track:hover {
+        .marquee-track-reverse {
+          display: flex;
+          width: max-content;
+          animation: marquee-reverse 24s linear infinite;
+        }
+        .marquee-track:hover,
+        .marquee-track-reverse:hover {
           animation-play-state: paused;
         }
       `}</style>
-      <div className="relative">
+      <div className="relative flex flex-col gap-4">
         <div
           className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
           style={{ background: "linear-gradient(to right, var(--color-surface), transparent)" }}
@@ -286,28 +327,13 @@ const ClientLogos = () => {
           style={{ background: "linear-gradient(to left, var(--color-surface), transparent)" }}
         />
         <div className="marquee-track">
-          {repeated.map(({ name, src }, i) => (
-            <div
-              key={`${name}-${i}`}
-              className="flex-shrink-0 mx-4 group cursor-default"
-            >
-              <div className="w-44 h-16 flex items-center justify-center bg-surface-container-high border border-outline-variant/10 px-6 py-4 transition-all duration-300 group-hover:border-outline-variant/30">
-                <img
-                  src={src}
-                  alt={name}
-                  className="max-h-8 w-auto object-contain grayscale opacity-50 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = 'none';
-                    const placeholder = target.nextElementSibling as HTMLElement;
-                    if (placeholder) placeholder.style.display = 'flex';
-                  }}
-                />
-                <div className="hidden w-full h-full items-center justify-center">
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-outline/40">{name}</span>
-                </div>
-              </div>
-            </div>
+          {repeated1.map(({ name, src }, i) => (
+            <LogoCard key={`row1-${name}-${i}`} name={name} src={src} rowKey="row1" />
+          ))}
+        </div>
+        <div className="marquee-track-reverse">
+          {repeated2.map(({ name, src }, i) => (
+            <LogoCard key={`row2-${name}-${i}`} name={name} src={src} rowKey="row2" />
           ))}
         </div>
       </div>
