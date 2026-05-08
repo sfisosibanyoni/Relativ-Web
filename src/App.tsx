@@ -246,30 +246,30 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
 };
 
 const clientLogos = [
-  { name: "Sasol", src: "/clients/Sasol.png" },
-  { name: "Shell", src: "/clients/shell.png" },
-  { name: "Edward Snell", src: "/clients/edward_snell.png" },
-  { name: "Famous Brands", src: "/clients/famous_brands.png" },
-  { name: "World Sports Betting", src: "/clients/world_sports_betting.png" },
+  { name: "Sasol", src: "/clients/Sasol.png", large: true },
+  { name: "Shell", src: "/clients/shell.png", large: true },
+  { name: "Edward Snell", src: "/clients/edward_snell.png", large: true },
+  { name: "Famous Brands", src: "/clients/famous_brands.png", large: true },
+  { name: "World Sports Betting", src: "/clients/world_sports_betting.png", large: true },
   { name: "WCG", src: "/clients/wcg.png" },
-  { name: "Wimpy", src: "/clients/wimpy.png" },
-  { name: "Pineapple Insurance", src: "/clients/pineapple_insurance.png" },
-  { name: "Sanlam", src: "/clients/sanlam.png" },
-  { name: "Simba", src: "/clients/simba.png" },
+  { name: "Wimpy", src: "/clients/wimpy.png", large: true },
+  { name: "Pineapple Insurance", src: "/clients/pineapple_insurance.png", large: true },
+  { name: "Sanlam", src: "/clients/sanlam.png", large: true },
+  { name: "Simba", src: "/clients/simba.png", large: true },
   { name: "South African Tourism", src: "/clients/south_african_tourism.png" },
   { name: "Telkom", src: "/clients/telkom.png" },
 ];
 
 const clientLogos2 = [
   { name: "Unilever", src: "/clients/unilever.png" },
-  { name: "ABSA", src: "/clients/absa.png" },
+  { name: "ABSA", src: "/clients/absa.png", large: true },
   { name: "Amazon", src: "/clients/amazon.png" },
   { name: "Castle Lite", src: "/clients/castle_lite.png" },
   { name: "Cell C", src: "/clients/cell_c.png" },
-  { name: "Clover", src: "/clients/clover.png" },
+  { name: "Clover", src: "/clients/clover.png", large: true },
   { name: "Coca-Cola", src: "/clients/coca_cola.png" },
   { name: "Ebet", src: "/clients/ebet.png" },
-  { name: "Lula Bets", src: "/clients/lula_bets.png" },
+  { name: "Lula Bets", src: "/clients/lula_bets.png", large: true },
   { name: "Nando's", src: "/clients/nandos.png" },
   { name: "Nestlé", src: "/clients/nestle.png" },
   { name: "Netflix", src: "/clients/netflix.png" },
@@ -285,10 +285,10 @@ const ClientLogos = () => (
         <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-white">Brands We've Worked With</h2>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-px bg-zinc-700">
-        {allClientLogos.map(({ name, src }) => (
+        {allClientLogos.map(({ name, src, large }) => (
           <div
             key={name}
-            className="bg-white flex items-center justify-center p-6 aspect-[3/2] group"
+            className={`bg-white flex items-center justify-center aspect-[3/2] group ${large ? "p-2" : "p-6"}`}
           >
             <img
               src={src}
