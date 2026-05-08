@@ -278,13 +278,13 @@ const clientLogos2 = [
 const allClientLogos = [...clientLogos, ...clientLogos2];
 
 const ClientLogos = () => (
-  <section className="py-24 bg-zinc-50 border-t border-zinc-200">
+  <section className="py-24 bg-zinc-800 border-t border-zinc-700">
     <div className="max-w-screen-xl mx-auto px-8">
       <div className="mb-16">
         <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-zinc-400 mb-2">Our Work</p>
-        <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-zinc-900">Brands We've Worked With</h2>
+        <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-white">Brands We've Worked With</h2>
       </div>
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-px bg-zinc-200">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-px bg-zinc-700">
         {allClientLogos.map(({ name, src }) => (
           <div
             key={name}
