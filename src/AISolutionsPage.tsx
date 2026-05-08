@@ -36,7 +36,7 @@ const pillars = [
   {
     icon: Globe,
     title: "Cultural Accuracy",
-    body: "Authentic, regionally aware imagery that respects nuance — especially tailored for diverse African markets.",
+    body: "Authentic, regionally aware imagery that respects nuance, tailored specifically for diverse African markets.",
   },
   {
     icon: Users,

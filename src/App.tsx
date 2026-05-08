@@ -152,21 +152,21 @@ const Capabilities = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study'
         <CapabilityCard
           icon={Share2}
           title="Marketing & Comms"
-          description="360° marketing and communications — brand strategy, PR, social media, events, influencer management, design, and everything in between."
+          description="360° marketing and communications: brand strategy, PR, social media, events, influencer management, design, and everything in between."
           colorClass="primary"
           onClick={() => onNavigate('marketing-comms')}
         />
         <CapabilityCard
           icon={Layout}
           title="Media Placement"
-          description="Precision media architecture across OOH, TV, radio, digital, and programmatic — unified with Relativ Media's 900+ physical assets."
+          description="Precision media architecture across OOH, TV, radio, digital, and programmatic. Unified with Relativ Media's 900+ physical assets."
           colorClass="tertiary"
           onClick={() => onNavigate('design-creative')}
         />
         <CapabilityCard
           icon={Brain}
           title="Generative AI"
-          description="Culturally accurate, on-brand AI creative at scale — bespoke image libraries, on-brand systems, and AI strategy consulting for brands and agencies."
+          description="Culturally accurate, on-brand AI creative at scale. Bespoke image libraries, on-brand systems, and AI strategy consulting for brands and agencies."
           colorClass="secondary"
           onClick={() => onNavigate('ai-solutions')}
         />

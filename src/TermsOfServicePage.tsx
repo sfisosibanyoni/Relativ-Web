@@ -17,7 +17,7 @@ export default function TermsOfServicePage({ onNavigate }: LegalPageProps) {
     window.scrollTo(0, 0);
     document.title = "Terms of Service | Relativ Connect";
     const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", "Terms of Service for Relativ Connect (Pty) Ltd — governing the use of our website and services under South African law including the CPA and ECTA.");
+    if (desc) desc.setAttribute("content", "Terms of Service for Relativ Connect (Pty) Ltd, governing the use of our website and services under South African law including the CPA and ECTA.");
   }, []);
 
   return (
@@ -53,7 +53,7 @@ export default function TermsOfServicePage({ onNavigate }: LegalPageProps) {
 
           <Section title="3. Intellectual Property">
             <p>
-              All content on this website — including text, graphics, logos, images, and software — is the property of Relativ Connect (Pty) Ltd or its licensors and is protected by South African copyright law and applicable international treaties.
+              All content on this website, including text, graphics, logos, images, and software, is the property of Relativ Connect (Pty) Ltd or its licensors and is protected by South African copyright law and applicable international treaties.
             </p>
             <p>
               You may not reproduce, distribute, modify, or create derivative works from any content on this website without our prior written consent.

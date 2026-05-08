@@ -29,7 +29,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
     window.scrollTo(0, 0);
     document.title = "Precision Media Placement & Architecture | Relativ Connect";
     const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", "Strategic media placement across OOH, TV, radio, digital, and programmatic channels — unified with Relativ Media's 900+ physical assets for true omni-channel reach.");
+    if (desc) desc.setAttribute("content", "Strategic media placement across OOH, TV, radio, digital, and programmatic channels, unified with Relativ Media's 900+ physical assets for true omni-channel reach.");
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.setAttribute("href", "https://www.relativconnect.co.za/design-creative");
     const schema = document.createElement("script");
@@ -40,7 +40,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
       "@type": "Service",
       "name": "Precision Media Placement & Architecture",
       "url": "https://www.relativconnect.co.za/design-creative",
-      "description": "Strategic media placement across OOH, TV, radio, digital, and programmatic channels — unified with Relativ Media's 900+ physical assets for true omni-channel reach.",
+      "description": "Strategic media placement across OOH, TV, radio, digital, and programmatic channels, unified with Relativ Media's 900+ physical assets for true omni-channel reach.",
       "provider": { "@type": "MarketingAgency", "name": "Relativ Connect", "url": "https://www.relativconnect.co.za" },
       "areaServed": [{ "@type": "Place", "name": "South Africa" }, { "@type": "Place", "name": "Africa" }],
       "serviceType": "Media Placement",
@@ -241,7 +241,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
                 Relativ Connect operates as the digital frontier for our mother agency, <span className="text-on-surface font-bold">Relativ Media</span>.
               </p>
               <p className="text-base leading-relaxed text-on-surface-variant mb-10">
-                While Relativ Media dominates the physical world with large-format digital assets and premier OOH locations, Relativ Connect bridges the gap — unifying physical visibility with digital strategy to create a seamless omni-channel ecosystem for the modern brand.
+                While Relativ Media dominates the physical world with large-format digital assets and premier OOH locations, Relativ Connect bridges the gap by unifying physical visibility with digital strategy, creating a seamless omni-channel ecosystem for the modern brand.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-6 bg-surface-container-high">

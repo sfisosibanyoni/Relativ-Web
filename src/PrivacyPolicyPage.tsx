@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage({ onNavigate }: LegalPageProps) {
     window.scrollTo(0, 0);
     document.title = "Privacy Policy | Relativ Connect";
     const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", "Relativ Connect's Privacy Policy — how we collect, use, and protect your personal information in accordance with South Africa's POPIA legislation.");
+    if (desc) desc.setAttribute("content", "Relativ Connect's Privacy Policy. How we collect, use, and protect your personal information in accordance with South Africa's POPIA legislation.");
   }, []);
 
   return (
