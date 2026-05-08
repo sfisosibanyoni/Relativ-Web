@@ -281,7 +281,7 @@ const LogoCard = ({ name, src, rowKey }: { name: string; src: string; rowKey: st
       <img
         src={src}
         alt={name}
-        className="max-h-8 w-auto object-contain grayscale opacity-50 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+        className="w-full h-full object-contain"
         onError={(e) => {
           const target = e.currentTarget;
           target.style.display = 'none';
