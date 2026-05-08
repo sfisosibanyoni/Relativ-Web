@@ -288,7 +288,7 @@ const ClientLogos = () => (
         {allClientLogos.map(({ name, src, large }) => (
           <div
             key={name}
-            className={`bg-white flex items-center justify-center aspect-[3/2] group ${large ? "p-2" : "p-6"}`}
+            className={`bg-white flex items-center justify-center group ${large ? "aspect-[3/2] p-0" : "aspect-[3/2] p-6"}`}
           >
             <img
               src={src}
