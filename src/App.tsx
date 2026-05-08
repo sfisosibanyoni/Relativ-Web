@@ -254,7 +254,7 @@ const allClientLogos = [
   { name: "Shell", src: "/clients/shell.png", large: true },  // ~$210B
   { name: "Unilever", src: "/clients/unilever.png" },         // ~$140B
   // JSE-listed large caps
-  { name: "Sanlam", src: "/clients/sanlam.png", large: true },     // ~$10B
+  { name: "Sanlam", src: "/clients/sanlam.png", large: true, fit: true },     // ~$10B
   { name: "ABSA", src: "/clients/absa.png", large: true },         // ~$9B
   { name: "Sasol", src: "/clients/Sasol.png", large: true },       // ~$4B
   { name: "Telkom", src: "/clients/telkom.png" },                   // ~$1B
@@ -269,10 +269,10 @@ const allClientLogos = [
   { name: "Edward Snell", src: "/clients/edward_snell.png", large: true },
   { name: "South African Tourism", src: "/clients/south_african_tourism.png" },
   { name: "WCG", src: "/clients/wcg.png" },
-  { name: "World Sports Betting", src: "/clients/world_sports_betting.png", large: true },
+  { name: "World Sports Betting", src: "/clients/world_sports_betting.png", large: true, fit: true },
   { name: "Pineapple Insurance", src: "/clients/pineapple_insurance.png", large: true },
   { name: "Ebet", src: "/clients/ebet.png" },
-  { name: "Lula Bets", src: "/clients/lula_bets.png", large: true },
+  { name: "Lula Bets", src: "/clients/lula_bets.png", large: true, fit: true },
 ];
 
 const ClientLogos = () => (
@@ -283,10 +283,10 @@ const ClientLogos = () => (
         <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-white">Brands We've Worked With</h2>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-px bg-zinc-700">
-        {allClientLogos.map(({ name, src, large }) => (
+        {allClientLogos.map(({ name, src, large, fit }) => (
           <div
             key={name}
-            className={`bg-white flex items-center justify-center group ${large ? "aspect-[3/2] p-0" : "aspect-[3/2] p-6"}`}
+            className={`bg-white flex items-center justify-center group aspect-[3/2] ${fit ? "p-4" : large ? "p-0" : "p-6"}`}
           >
             <img
               src={src}
