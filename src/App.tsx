@@ -213,7 +213,7 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Verified DOOH Impressions</div>
               </div>
               <div className="border-l border-outline-variant/30 pl-8">
-                <div className="text-4xl font-black text-primary mb-1">100K+</div>
+                <div className="text-4xl font-black text-primary mb-1">112K+</div>
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Visitors online and in-person</div>
               </div>
             </div>
@@ -407,6 +407,9 @@ const WorkGallery = () => {
             <img
               src={img.src}
               alt={img.alt}
+              loading="lazy"
+              width={320}
+              height={420}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -433,7 +436,7 @@ const WorkGallery = () => {
             onClick={() => setLightbox(i)}
             className="relative aspect-square overflow-hidden cursor-pointer"
           >
-            <img src={img.src} alt={img.alt} className="w-full h-full object-cover" />
+            <img src={img.src} alt={img.alt} loading="lazy" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/20" />
           </div>
         ))}
@@ -654,7 +657,7 @@ const Footer = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-study' | 'st
     <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
       <div className="mb-8 md:mb-0">
         <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
-        <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
+        <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© {new Date().getFullYear()} Relativ Connect.</p>
       </div>
       <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
         <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>

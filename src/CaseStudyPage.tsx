@@ -454,7 +454,7 @@ const CaseStudyPage = ({ onNavigate }: CaseStudyPageProps) => {
               className="h-8 w-auto mb-4 opacity-80"
               src="/logo.png"
             />
-            <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500">© 2025 Relativ Connect. All rights reserved.</p>
+            <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500">© {new Date().getFullYear()} Relativ Connect. All rights reserved.</p>
           </div>
           <div className="flex flex-wrap gap-8 justify-center">
             <button onClick={() => onNavigate('privacy-policy')} className="text-[10px] uppercase tracking-widest font-bold text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>

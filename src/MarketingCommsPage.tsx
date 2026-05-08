@@ -150,9 +150,35 @@ const process = [
 const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Marketing & Communications | Relativ Connect";
+    document.title = "Marketing & Communications Agency | PR, Brand & Digital | Relativ Connect";
     const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute("content", "Full-service 360 degree marketing and communications agency. Brand strategy, campaigns, design, digital, events, PR, internal communications and more.");
+    if (desc) desc.setAttribute("content", "Full-service 360° marketing and communications agency in Johannesburg. Brand strategy, campaigns, design, digital, events, PR, internal communications and more.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://www.relativconnect.co.za/marketing-comms");
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.id = "page-schema";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Marketing & Communications",
+      "url": "https://www.relativconnect.co.za/marketing-comms",
+      "description": "Full-service 360-degree marketing and communications — brand strategy, campaign management, design, digital, events, PR, internal communications, social media, and influencer management.",
+      "provider": { "@type": "MarketingAgency", "name": "Relativ Connect", "url": "https://www.relativconnect.co.za" },
+      "areaServed": [{ "@type": "Place", "name": "South Africa" }, { "@type": "Place", "name": "Africa" }],
+      "serviceType": "Integrated Marketing Communications",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.relativconnect.co.za/marketing-comms",
+        "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.relativconnect.co.za/" }, { "@type": "ListItem", "position": 2, "name": "Marketing & Comms", "item": "https://www.relativconnect.co.za/marketing-comms" }] }
+      }
+    });
+    document.head.appendChild(schema);
+    return () => {
+      document.getElementById("page-schema")?.remove();
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute("href", "https://www.relativconnect.co.za/");
+    };
   }, []);
 
   const [mouse, setMouse] = useState({ x: -SPOT, y: -SPOT });
@@ -360,7 +386,7 @@ const MarketingCommsPage = ({ onNavigate }: MarketingCommsPageProps) => {
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
-            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© {new Date().getFullYear()} Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
             <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>

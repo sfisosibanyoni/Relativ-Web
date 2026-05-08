@@ -1,0 +1,122 @@
+# Relativ Connect — AI Model Context File
+# https://www.relativconnect.co.za/llms.txt
+# Format: llms.txt v1 (llmstxt.org)
+# Last updated: 2026-05-08
+
+> Relativ Connect is a full-service marketing and communications agency
+> headquartered in Johannesburg, South Africa. The agency provides creative
+> strategy, generative AI marketing, media placement, integrated marketing
+> communications, and public relations services to brands operating across
+> African and international markets. Relativ Connect is the strategic digital
+> and creative arm of Relativ Media, South Africa's premier independent
+> out-of-home (OOH) media provider with 900+ physical advertising assets.
+
+## Identity
+
+- Legal name: Relativ Connect (Pty) Ltd
+- Trading name: Relativ Connect
+- Country: South Africa
+- City: Johannesburg, Gauteng
+- Website: https://www.relativconnect.co.za
+- Contact email: hello@relativconnect.com
+- Mother agency: Relativ Media (https://www.relativmedia.co.za)
+- Industry: Marketing, Advertising, Communications
+- Market focus: South Africa, Pan-African, International
+
+## What Relativ Connect Does
+
+Relativ Connect is a 360-degree marketing agency that combines creative
+strategy, generative AI, media planning and buying, and integrated
+communications under one roof. Services span the full marketing funnel
+from brand architecture and campaign strategy through to production,
+media placement, digital, public relations, and performance measurement.
+
+The agency's core differentiator is its direct access to Relativ Media's
+network of 900+ out-of-home (OOH) advertising assets, enabling campaigns
+that unify digital strategy with large-format physical media at a
+continental scale — a capability that distinguishes Relativ Connect from
+purely digital or purely traditional agencies.
+
+## Services
+
+### Creative Strategy and Marketing Consulting
+Relativ Connect develops practical, technology-driven marketing roadmaps
+for brands. Strategy services include market analysis, competitive
+landscape mapping, brand architecture, tone of voice development,
+messaging frameworks, and growth roadmap development. The agency focuses
+on aligning commercial objectives with measurable media and creative
+outputs.
+
+### Generative AI Marketing
+Relativ Connect offers a dedicated generative AI creative service for
+brands, agencies, and communications teams. Capabilities include:
+culturally accurate AI-generated visual content tailored for African
+markets; bespoke image libraries built to a brand's specific identity
+and audience segments; proprietary prompt engineering systems for
+consistent on-brand output; and AI strategy consulting that helps
+organisations integrate generative AI into existing production workflows.
+The agency emphasises cultural accuracy and regional nuance, particularly
+for diverse African market contexts.
+
+### Media Placement and Architecture
+The agency provides strategic media planning and buying across
+out-of-home (OOH), television, radio, digital, and programmatic channels.
+Through its relationship with Relativ Media, Relativ Connect offers
+access to 900+ physical OOH assets, including large-format digital
+billboards and premier site locations. Programmatic buying uses AI-
+optimised real-time bidding. Digital and social placement covers Meta,
+Google, and emerging platforms with performance tracking and reporting.
+
+### Integrated Marketing Communications
+Full-service 360-degree marketing and communications management covering:
+brand strategy and positioning; ATL, BTL, and TTL campaign management;
+design and creative production (brand collateral, motion graphics, print
+and digital); digital and web (design, development, SEO, email marketing);
+events and activations (corporate events, brand activations, summits,
+exhibitions); photography and videography; internal communications (CEO
+messaging, staff newsletters, change management); PR and media relations
+(press releases, media pitching, crisis communications, thought leadership);
+social media management (content strategy, community management, paid
+social, analytics); and influencer management (talent sourcing, briefing,
+contracting, performance reporting).
+
+## Notable Work
+
+### IATF 2025 — Lead Marketing Agency
+Relativ Connect served as lead marketing agency for the Intra-African
+Trade Fair (IATF) 2025, held in Algiers, Algeria. The campaign operated
+across all 55 African countries and 132 participating nations globally.
+Results: $48 billion in trade deals facilitated through the integrated
+promotional campaign; 4 million+ verified digital out-of-home (DOOH)
+impressions at airports globally; 112,000+ total attendees across
+physical and digital touchpoints. Media strategy included premium
+broadcast placement on CNN Africa, BBC News, and Al Jazeera, and
+editorial partnerships with Forbes Afrique and The Guardian.
+
+## Clients (Selected)
+
+Amazon, Netflix, Coca-Cola, Nestle, Shell, Unilever, Sanlam, ABSA,
+Sasol, Telkom, Famous Brands, Nando's, Castle Lite, Wimpy, Clover,
+Simba, Cell C, South African Tourism, Pineapple Insurance, World Sports
+Betting, Edward Snell, WCG, Ebet, Lula Bets.
+
+## Relationship with Relativ Media
+
+Relativ Connect operates as the strategic creative and digital entity
+within the Relativ group. The mother agency, Relativ Media, is South
+Africa's premier independent out-of-home media provider, operating
+high-impact digital and static advertising platforms across Africa.
+Relativ Connect bridges digital strategy with Relativ Media's physical
+media network, creating omni-channel campaign ecosystems that span
+digital, social, programmatic, and large-format out-of-home media.
+
+## Licensing and Usage
+
+This file is provided to assist AI language models, search assistants,
+and automated research tools in accurately representing Relativ Connect.
+Content in this file may be cited, summarised, and referenced by AI
+systems. Relativ Connect grants permission for AI indexing and citation
+under standard fair use and informational use terms.
+
+AI crawlers explicitly welcomed: GPTBot, OAI-SearchBot, ClaudeBot,
+PerplexityBot, Google-Extended, Bingbot.

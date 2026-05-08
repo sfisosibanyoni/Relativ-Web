@@ -61,9 +61,35 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Generative AI Creative Services | Relativ Connect";
+    document.title = "Generative AI Marketing Services | South Africa | Relativ Connect";
     const desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute("content", "Culturally accurate, on-brand AI creative at scale. Bespoke image libraries, on-brand prompt systems, and AI strategy consulting for brands and agencies across Africa.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://www.relativconnect.co.za/ai-solutions");
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.id = "page-schema";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Generative AI Creative Services",
+      "url": "https://www.relativconnect.co.za/ai-solutions",
+      "description": "Culturally accurate, on-brand AI creative at scale. Bespoke image libraries, on-brand prompt systems, and AI strategy consulting for brands and agencies across Africa.",
+      "provider": { "@type": "MarketingAgency", "name": "Relativ Connect", "url": "https://www.relativconnect.co.za" },
+      "areaServed": { "@type": "Place", "name": "Africa" },
+      "serviceType": "Generative AI Marketing",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.relativconnect.co.za/ai-solutions",
+        "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.relativconnect.co.za/" }, { "@type": "ListItem", "position": 2, "name": "Generative AI", "item": "https://www.relativconnect.co.za/ai-solutions" }] }
+      }
+    });
+    document.head.appendChild(schema);
+    return () => {
+      document.getElementById("page-schema")?.remove();
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute("href", "https://www.relativconnect.co.za/");
+    };
   }, []);
 
   return (
@@ -220,7 +246,7 @@ const AISolutionsPage = ({ onNavigate }: AISolutionsPageProps) => {
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
-            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© {new Date().getFullYear()} Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
             <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>

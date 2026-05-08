@@ -30,6 +30,32 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
     document.title = "Precision Media Placement & Architecture | Relativ Connect";
     const desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute("content", "Strategic media placement across OOH, TV, radio, digital, and programmatic channels — unified with Relativ Media's 900+ physical assets for true omni-channel reach.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://www.relativconnect.co.za/design-creative");
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.id = "page-schema";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Precision Media Placement & Architecture",
+      "url": "https://www.relativconnect.co.za/design-creative",
+      "description": "Strategic media placement across OOH, TV, radio, digital, and programmatic channels — unified with Relativ Media's 900+ physical assets for true omni-channel reach.",
+      "provider": { "@type": "MarketingAgency", "name": "Relativ Connect", "url": "https://www.relativconnect.co.za" },
+      "areaServed": [{ "@type": "Place", "name": "South Africa" }, { "@type": "Place", "name": "Africa" }],
+      "serviceType": "Media Placement",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.relativconnect.co.za/design-creative",
+        "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.relativconnect.co.za/" }, { "@type": "ListItem", "position": 2, "name": "Media Placement", "item": "https://www.relativconnect.co.za/design-creative" }] }
+      }
+    });
+    document.head.appendChild(schema);
+    return () => {
+      document.getElementById("page-schema")?.remove();
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute("href", "https://www.relativconnect.co.za/");
+    };
   }, []);
 
   return (
@@ -317,7 +343,7 @@ const MediaPlacementPage = ({ onNavigate }: MediaPlacementPageProps) => {
         <div className="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
           <div className="mb-8 md:mb-0">
             <img src="/logo.png" alt="Relativ Connect" className="h-8 w-auto mb-3 opacity-80" />
-            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© {new Date().getFullYear()} Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
             <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>

@@ -27,9 +27,35 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Marketing Strategy & Consulting | Relativ Connect";
+    document.title = "Marketing Strategy Agency Johannesburg | Relativ Connect";
     const desc = document.querySelector('meta[name="description"]');
     if (desc) desc.setAttribute("content", "Practical, technology-driven marketing roadmaps that help your business grow. Strategic consulting tailored for brands operating across African markets.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://www.relativconnect.co.za/strategy");
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.id = "page-schema";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Marketing Strategy & Consulting",
+      "url": "https://www.relativconnect.co.za/strategy",
+      "description": "Practical, technology-driven marketing roadmaps that help your business grow. Strategic consulting tailored for brands operating across African markets — market analysis, roadmap development, and growth engineering.",
+      "provider": { "@type": "MarketingAgency", "name": "Relativ Connect", "url": "https://www.relativconnect.co.za" },
+      "areaServed": { "@type": "Place", "name": "Africa" },
+      "serviceType": "Marketing Strategy",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.relativconnect.co.za/strategy",
+        "breadcrumb": { "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.relativconnect.co.za/" }, { "@type": "ListItem", "position": 2, "name": "Strategy", "item": "https://www.relativconnect.co.za/strategy" }] }
+      }
+    });
+    document.head.appendChild(schema);
+    return () => {
+      document.getElementById("page-schema")?.remove();
+      const canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute("href", "https://www.relativconnect.co.za/");
+    };
   }, []);
 
   return (
@@ -193,7 +219,7 @@ const StrategyPage = ({ onNavigate }: StrategyPageProps) => {
               className="h-8 w-auto mb-4 opacity-80"
               src="/logo.png"
             />
-            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© 2024 Relativ Connect.</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-slate-500">© {new Date().getFullYear()} Relativ Connect.</p>
           </div>
           <div className="flex flex-wrap gap-8 text-sm tracking-wide uppercase">
             <button onClick={() => onNavigate('privacy-policy')} className="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors opacity-80 hover:opacity-100">Privacy Policy</button>
