@@ -309,8 +309,7 @@ const ClientLogos = () => (
       </div>
     </div>
   </section>
-  );
-};
+);
 
 const workImages = [
   // 2019-04-10
