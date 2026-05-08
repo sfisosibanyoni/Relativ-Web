@@ -277,7 +277,7 @@ const clientLogos2 = [
 
 const LogoCard = ({ name, src, rowKey }: { name: string; src: string; rowKey: string }) => (
   <div className="flex-shrink-0 mx-4 group cursor-default">
-    <div className="w-56 h-24 flex items-center justify-center bg-surface-container-high border border-outline-variant/10 px-6 py-4 transition-all duration-300 group-hover:border-outline-variant/30">
+    <div className="w-56 h-24 flex items-center justify-center bg-white border border-outline-variant/10 px-6 py-4 transition-all duration-300 group-hover:border-outline-variant/30">
       <img
         src={src}
         alt={name}
