@@ -257,7 +257,7 @@ const allClientLogos = [
   { name: "Sanlam", src: "/clients/sanlam.png", large: true, fit: true },     // ~$10B
   { name: "ABSA", src: "/clients/absa.png", large: true },         // ~$9B
   { name: "Sasol", src: "/clients/Sasol.png", large: true, fit: true },       // ~$4B
-  { name: "Telkom", src: "/clients/telkom.png" },                   // ~$1B
+  { name: "Afreximbank", src: "/clients/afreximbank.png" },         // ~$1B
   { name: "Famous Brands", src: "/clients/famous_brands.png", large: true }, // ~$600M (owns Wimpy)
   // Private / subsidiary brands by estimated size
   { name: "Nando's", src: "/clients/nandos.png" },
@@ -271,7 +271,7 @@ const allClientLogos = [
   { name: "WCG", src: "/clients/wcg.png" },
   { name: "World Sports Betting", src: "/clients/world_sports_betting.png", large: true, fit: true },
   { name: "Pineapple Insurance", src: "/clients/pineapple_insurance.png", large: true },
-  { name: "Afreximbank", src: "/clients/afreximbank.png" },
+  { name: "Telkom", src: "/clients/telkom.png" },
   { name: "Lula Bets", src: "/clients/lula_bets.png", large: true, fit: true },
 ];
 
