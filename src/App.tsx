@@ -245,37 +245,35 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
   );
 };
 
-const clientLogos = [
-  { name: "Sasol", src: "/clients/Sasol.png", large: true },
-  { name: "Shell", src: "/clients/shell.png", large: true },
-  { name: "Edward Snell", src: "/clients/edward_snell.png", large: true },
-  { name: "Famous Brands", src: "/clients/famous_brands.png", large: true },
-  { name: "World Sports Betting", src: "/clients/world_sports_betting.png", large: true },
-  { name: "WCG", src: "/clients/wcg.png" },
-  { name: "Wimpy", src: "/clients/wimpy.png", large: true },
-  { name: "Pineapple Insurance", src: "/clients/pineapple_insurance.png", large: true },
-  { name: "Sanlam", src: "/clients/sanlam.png", large: true },
-  { name: "Simba", src: "/clients/simba.png", large: true },
-  { name: "South African Tourism", src: "/clients/south_african_tourism.png" },
-  { name: "Telkom", src: "/clients/telkom.png" },
-];
-
-const clientLogos2 = [
-  { name: "Unilever", src: "/clients/unilever.png" },
-  { name: "ABSA", src: "/clients/absa.png", large: true },
-  { name: "Amazon", src: "/clients/amazon.png" },
+const allClientLogos = [
+  // Global mega-caps
+  { name: "Amazon", src: "/clients/amazon.png" },             // ~$2.2T
+  { name: "Netflix", src: "/clients/netflix.png" },           // ~$380B
+  { name: "Coca-Cola", src: "/clients/coca_cola.png" },       // ~$270B
+  { name: "Nestlé", src: "/clients/nestle.png" },             // ~$240B
+  { name: "Shell", src: "/clients/shell.png", large: true },  // ~$210B
+  { name: "Unilever", src: "/clients/unilever.png" },         // ~$140B
+  // JSE-listed large caps
+  { name: "Sanlam", src: "/clients/sanlam.png", large: true },     // ~$10B
+  { name: "ABSA", src: "/clients/absa.png", large: true },         // ~$9B
+  { name: "Sasol", src: "/clients/Sasol.png", large: true },       // ~$4B
+  { name: "Telkom", src: "/clients/telkom.png" },                   // ~$1B
+  { name: "Famous Brands", src: "/clients/famous_brands.png", large: true }, // ~$600M (owns Wimpy)
+  // Private / subsidiary brands by estimated size
+  { name: "Nando's", src: "/clients/nandos.png" },
   { name: "Castle Lite", src: "/clients/castle_lite.png" },
-  { name: "Cell C", src: "/clients/cell_c.png" },
+  { name: "Wimpy", src: "/clients/wimpy.png", large: true },
   { name: "Clover", src: "/clients/clover.png", large: true },
-  { name: "Coca-Cola", src: "/clients/coca_cola.png" },
+  { name: "Simba", src: "/clients/simba.png", large: true },
+  { name: "Cell C", src: "/clients/cell_c.png" },
+  { name: "Edward Snell", src: "/clients/edward_snell.png", large: true },
+  { name: "South African Tourism", src: "/clients/south_african_tourism.png" },
+  { name: "WCG", src: "/clients/wcg.png" },
+  { name: "World Sports Betting", src: "/clients/world_sports_betting.png", large: true },
+  { name: "Pineapple Insurance", src: "/clients/pineapple_insurance.png", large: true },
   { name: "Ebet", src: "/clients/ebet.png" },
   { name: "Lula Bets", src: "/clients/lula_bets.png", large: true },
-  { name: "Nando's", src: "/clients/nandos.png" },
-  { name: "Nestlé", src: "/clients/nestle.png" },
-  { name: "Netflix", src: "/clients/netflix.png" },
 ];
-
-const allClientLogos = [...clientLogos, ...clientLogos2];
 
 const ClientLogos = () => (
   <section className="py-24 bg-zinc-800 border-t border-zinc-700">
