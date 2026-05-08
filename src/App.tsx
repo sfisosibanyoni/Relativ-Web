@@ -263,7 +263,7 @@ const allClientLogos = [
   { name: "Nando's", src: "/clients/nandos.png" },
   { name: "Castle Lite", src: "/clients/castle_lite.png" },
   { name: "Wimpy", src: "/clients/wimpy.png", large: true },
-  { name: "IATF", src: "/clients/iatf.png", large: true },
+  { name: "IATF", src: "/clients/iatf.png", fit: true },
   { name: "Simba", src: "/clients/simba.png", large: true },
   { name: "Cell C", src: "/clients/cell_c.png" },
   { name: "Edward Snell", src: "/clients/edward_snell.png", large: true },
