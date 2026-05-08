@@ -261,17 +261,17 @@ const allClientLogos = [
   { name: "Famous Brands", src: "/clients/famous_brands.png", large: true }, // ~$600M (owns Wimpy)
   // Private / subsidiary brands by estimated size
   { name: "Nando's", src: "/clients/nandos.png" },
-  { name: "Castle Lite", src: "/clients/castle_lite.png" },
+  { name: "Castle Lite", src: "/clients/castle_lite.png", large: true },
   { name: "Wimpy", src: "/clients/wimpy.png", large: true },
   { name: "IATF", src: "/clients/iatf.png", small: true },
   { name: "Simba", src: "/clients/simba.png", large: true },
   { name: "Cell C", src: "/clients/cell_c.png" },
   { name: "Edward Snell", src: "/clients/edward_snell.png", large: true },
-  { name: "South African Tourism", src: "/clients/south_african_tourism.png" },
-  { name: "WCG", src: "/clients/wcg.png" },
+  { name: "South African Tourism", src: "/clients/south_african_tourism.png", large: true },
+  { name: "WCG", src: "/clients/wcg.png", large: true },
   { name: "World Sports Betting", src: "/clients/world_sports_betting.png", large: true, fit: true },
   { name: "Pineapple Insurance", src: "/clients/pineapple_insurance.png", large: true },
-  { name: "Telkom", src: "/clients/telkom.png" },
+  { name: "Telkom", src: "/clients/telkom.png", large: true },
   { name: "Lula Bets", src: "/clients/lula_bets.png", large: true, fit: true },
 ];
 
