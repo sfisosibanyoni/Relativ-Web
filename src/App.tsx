@@ -256,7 +256,7 @@ const allClientLogos = [
   // JSE-listed large caps
   { name: "Sanlam", src: "/clients/sanlam.png", large: true, fit: true },     // ~$10B
   { name: "ABSA", src: "/clients/absa.png", large: true },         // ~$9B
-  { name: "Sasol", src: "/clients/Sasol.png", large: true },       // ~$4B
+  { name: "Sasol", src: "/clients/Sasol.png", large: true, fit: true },       // ~$4B
   { name: "Telkom", src: "/clients/telkom.png" },                   // ~$1B
   { name: "Famous Brands", src: "/clients/famous_brands.png", large: true }, // ~$600M (owns Wimpy)
   // Private / subsidiary brands by estimated size
