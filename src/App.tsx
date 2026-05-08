@@ -246,21 +246,33 @@ const CaseStudySection = ({ onNavigate }: { onNavigate: (page: 'home' | 'case-st
 };
 
 const clientLogos = [
-  { name: "Client 01", src: "/clients/client-01.png" },
-  { name: "Client 02", src: "/clients/client-02.png" },
-  { name: "Client 03", src: "/clients/client-03.png" },
-  { name: "Client 04", src: "/clients/client-04.png" },
-  { name: "Client 05", src: "/clients/client-05.png" },
-  { name: "Client 06", src: "/clients/client-06.png" },
+  { name: "Sasol", src: "/clients/Sasol.png" },
+  { name: "Shell", src: "/clients/shell.png" },
+  { name: "Edward Snell", src: "/clients/edward_snell.png" },
+  { name: "Famous Brands", src: "/clients/famous_brands.png" },
+  { name: "World Sports Betting", src: "/clients/world_sports_betting.png" },
+  { name: "WCG", src: "/clients/wcg.png" },
+  { name: "Wimpy", src: "/clients/wimpy.png" },
+  { name: "Pineapple Insurance", src: "/clients/pineapple_insurance.png" },
+  { name: "Sanlam", src: "/clients/sanlam.png" },
+  { name: "Simba", src: "/clients/simba.png" },
+  { name: "South African Tourism", src: "/clients/south_african_tourism.png" },
+  { name: "Telkom", src: "/clients/telkom.png" },
 ];
 
 const clientLogos2 = [
-  { name: "Client 07", src: "/clients/client-07.png" },
-  { name: "Client 08", src: "/clients/client-08.png" },
-  { name: "Client 09", src: "/clients/client-09.png" },
-  { name: "Client 10", src: "/clients/client-10.png" },
-  { name: "Client 11", src: "/clients/client-11.png" },
-  { name: "Client 12", src: "/clients/client-12.png" },
+  { name: "Unilever", src: "/clients/unilever.png" },
+  { name: "ABSA", src: "/clients/absa.png" },
+  { name: "Amazon", src: "/clients/amazon.png" },
+  { name: "Castle Lite", src: "/clients/castle_lite.png" },
+  { name: "Cell C", src: "/clients/cell_c.png" },
+  { name: "Clover", src: "/clients/clover.png" },
+  { name: "Coca-Cola", src: "/clients/coca_cola.png" },
+  { name: "Ebet", src: "/clients/ebet.png" },
+  { name: "Lula Bets", src: "/clients/lula_bets.png" },
+  { name: "Nando's", src: "/clients/nandos.png" },
+  { name: "Nestlé", src: "/clients/nestle.png" },
+  { name: "Netflix", src: "/clients/netflix.png" },
 ];
 
 const LogoCard = ({ name, src, rowKey }: { name: string; src: string; rowKey: string }) => (
