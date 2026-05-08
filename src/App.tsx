@@ -275,81 +275,40 @@ const clientLogos2 = [
   { name: "Netflix", src: "/clients/netflix.png" },
 ];
 
-const LogoCard = ({ name, src, rowKey }: { name: string; src: string; rowKey: string }) => (
-  <div className="flex-shrink-0 mx-4 group cursor-default">
-    <div className="w-56 h-24 flex items-center justify-center bg-white border border-outline-variant/10 px-6 py-4 transition-all duration-300 group-hover:border-outline-variant/30">
-      <img
-        src={src}
-        alt={name}
-        className="w-full h-full object-contain"
-        onError={(e) => {
-          const target = e.currentTarget;
-          target.style.display = 'none';
-          const placeholder = target.nextElementSibling as HTMLElement;
-          if (placeholder) placeholder.style.display = 'flex';
-        }}
-      />
-      <div className="hidden w-full h-full items-center justify-center">
-        <span className="text-[10px] uppercase tracking-widest font-bold text-outline/40">{name}</span>
+const allClientLogos = [...clientLogos, ...clientLogos2];
+
+const ClientLogos = () => (
+  <section className="py-24 bg-zinc-50 border-t border-zinc-200">
+    <div className="max-w-screen-xl mx-auto px-8">
+      <div className="mb-16">
+        <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-zinc-400 mb-2">Our Work</p>
+        <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-zinc-900">Brands We've Worked With</h2>
+      </div>
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-px bg-zinc-200">
+        {allClientLogos.map(({ name, src }) => (
+          <div
+            key={name}
+            className="bg-white flex items-center justify-center p-6 aspect-[3/2] group"
+          >
+            <img
+              src={src}
+              alt={name}
+              className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => {
+                const target = e.currentTarget;
+                target.style.display = 'none';
+                const placeholder = target.nextElementSibling as HTMLElement;
+                if (placeholder) placeholder.style.display = 'flex';
+              }}
+            />
+            <div className="hidden w-full h-full items-center justify-center">
+              <span className="text-[10px] uppercase tracking-widest font-bold text-zinc-300">{name}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-  </div>
-);
-
-const ClientLogos = () => {
-  const repeated1 = [...clientLogos, ...clientLogos, ...clientLogos];
-  const repeated2 = [...clientLogos2, ...clientLogos2, ...clientLogos2];
-  return (
-    <section className="py-20 bg-surface border-t border-outline-variant/10 overflow-hidden">
-      <div className="max-w-screen-2xl mx-auto px-8 mb-16">
-        <p className="text-[10px] uppercase tracking-[0.35em] font-bold text-on-surface-variant mb-2">Our Work</p>
-        <h2 className="text-4xl md:text-5xl font-black tracking-tighter uppercase">Brands We've Worked With</h2>
-      </div>
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-33.333%); }
-        }
-        @keyframes marquee-reverse {
-          0% { transform: translateX(-33.333%); }
-          100% { transform: translateX(0); }
-        }
-        .marquee-track {
-          display: flex;
-          width: max-content;
-          animation: marquee 50s linear infinite;
-        }
-        .marquee-track-reverse {
-          display: flex;
-          width: max-content;
-          animation: marquee-reverse 50s linear infinite;
-        }
-        .marquee-track:hover,
-        .marquee-track-reverse:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
-      <div className="relative flex flex-col gap-4">
-        <div
-          className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to right, var(--color-surface), transparent)" }}
-        />
-        <div
-          className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to left, var(--color-surface), transparent)" }}
-        />
-        <div className="marquee-track">
-          {repeated1.map(({ name, src }, i) => (
-            <LogoCard key={`row1-${name}-${i}`} name={name} src={src} rowKey="row1" />
-          ))}
-        </div>
-        <div className="marquee-track-reverse">
-          {repeated2.map(({ name, src }, i) => (
-            <LogoCard key={`row2-${name}-${i}`} name={name} src={src} rowKey="row2" />
-          ))}
-        </div>
-      </div>
-    </section>
+  </section>
   );
 };
 
